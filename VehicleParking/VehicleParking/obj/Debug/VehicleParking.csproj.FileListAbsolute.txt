@@ -1,0 +1,16 @@
+c:\users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\bin\Debug\VehicleParking.exe.config
+c:\users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\bin\Debug\VehicleParking.exe
+c:\users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\bin\Debug\VehicleParking.pdb
+c:\users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache
+c:\users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.Properties.Resources.resources
+c:\users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csproj.GenerateResource.Cache
+c:\users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.exe
+c:\users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.pdb
+C:\Users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmConfigurations.resources
+C:\Users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmLogin.resources
+C:\Users\hengs\documents\visual studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmMainForm.resources
+C:\Users\hengs\Documents\Visual Studio 2015\Projects\VehicleParking\VehicleParking\bin\Debug\km\VehicleParking.resources.dll
+C:\Users\hengs\Documents\Visual Studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmMainForm.km.resources
+C:\Users\hengs\Documents\Visual Studio 2015\Projects\VehicleParking\VehicleParking\obj\Debug\km\VehicleParking.resources.dll
+C:\Users\hengs\Documents\Visual Studio 2015\Projects\VehicleParking\VehicleParking\bin\Debug\EntityFramework.dll
+C:\Users\hengs\Documents\Visual Studio 2015\Projects\VehicleParking\VehicleParking\bin\Debug\EntityFramework.xml
