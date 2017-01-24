@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="parkingModelStoreContainer" CdmEntityContainer="parkingEntities">
+    <EntitySetMapping Name="tblusers">
+      <EntityTypeMapping TypeName="parkingModel.tbluser">
+        <MappingFragment StoreEntitySet="tbluser">
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblins">
+      <EntityTypeMapping TypeName="parkingModel.tblin">
+        <MappingFragment StoreEntitySet="tblin">
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="InDateTime" ColumnName="InDateTime" />
+          <ScalarProperty Name="InId" ColumnName="InId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblouts">
+      <EntityTypeMapping TypeName="parkingModel.tblout">
+        <MappingFragment StoreEntitySet="tblout">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="Out_DateTime" ColumnName="Out-DateTime" />
+          <ScalarProperty Name="OutId" ColumnName="OutId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltickets">
+      <EntityTypeMapping TypeName="parkingModel.tblticket">
+        <MappingFragment StoreEntitySet="tblticket">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

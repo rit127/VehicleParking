@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="parkingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblin">
+          <Key>
+            <PropertyRef Name="InId" />
+          </Key>
+          <Property Name="InId" Type="int" Nullable="false" />
+          <Property Name="InDateTime" Type="datetime" Precision="0" />
+          <Property Name="TicketId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblout">
+          <Key>
+            <PropertyRef Name="OutId" />
+          </Key>
+          <Property Name="OutId" Type="int" Nullable="false" />
+          <Property Name="Out-DateTime" Type="datetime" Precision="0" />
+          <Property Name="TicketId" Type="int" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="int" Nullable="false" />
+          <Property Name="Barcode" Type="varchar" MaxLength="255" />
+          <Property Name="Image" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbluser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="UserType" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="tblin_ibfk_1">
+          <End Role="tblticket" Type="Self.tblticket" Multiplicity="0..1" />
+          <End Role="tblin" Type="Self.tblin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="tblin">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblout_ibfk_1">
+          <End Role="tblticket" Type="Self.tblticket" Multiplicity="0..1" />
+          <End Role="tblout" Type="Self.tblout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="tblout">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblout_ibfk_2">
+          <End Role="tbluser" Type="Self.tbluser" Multiplicity="0..1" />
+          <End Role="tblout" Type="Self.tblout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbluser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblout">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="parkingModelStoreContainer">
+          <EntitySet Name="tblin" EntityType="Self.tblin" Schema="parking" store:Type="Tables" />
+          <EntitySet Name="tblout" EntityType="Self.tblout" Schema="parking" store:Type="Tables" />
+          <EntitySet Name="tblticket" EntityType="Self.tblticket" Schema="parking" store:Type="Tables" />
+          <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="parking" store:Type="Tables" />
+          <AssociationSet Name="tblin_ibfk_1" Association="Self.tblin_ibfk_1">
+            <End Role="tblticket" EntitySet="tblticket" />
+            <End Role="tblin" EntitySet="tblin" />
+          </AssociationSet>
+          <AssociationSet Name="tblout_ibfk_1" Association="Self.tblout_ibfk_1">
+            <End Role="tblticket" EntitySet="tblticket" />
+            <End Role="tblout" EntitySet="tblout" />
+          </AssociationSet>
+          <AssociationSet Name="tblout_ibfk_2" Association="Self.tblout_ibfk_2">
+            <End Role="tbluser" EntitySet="tbluser" />
+            <End Role="tblout" EntitySet="tblout" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="parkingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbluser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblouts" Relationship="parkingModel.tblout_ibfk_2" FromRole="tbluser" ToRole="tblout" />
+        </EntityType>
+        <EntityContainer Name="parkingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblusers" EntityType="Self.tbluser" />
+          <EntitySet Name="tblins" EntityType="parkingModel.tblin" />
+          <EntitySet Name="tblouts" EntityType="parkingModel.tblout" />
+          <EntitySet Name="tbltickets" EntityType="parkingModel.tblticket" />
+          <AssociationSet Name="tblin_ibfk_1" Association="parkingModel.tblin_ibfk_1">
+            <End Role="tblticket" EntitySet="tbltickets" />
+            <End Role="tblin" EntitySet="tblins" />
+          </AssociationSet>
+          <AssociationSet Name="tblout_ibfk_1" Association="parkingModel.tblout_ibfk_1">
+            <End Role="tblticket" EntitySet="tbltickets" />
+            <End Role="tblout" EntitySet="tblouts" />
+          </AssociationSet>
+          <AssociationSet Name="tblout_ibfk_2" Association="parkingModel.tblout_ibfk_2">
+            <End Role="tbluser" EntitySet="tblusers" />
+            <End Role="tblout" EntitySet="tblouts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblin">
+          <Key>
+            <PropertyRef Name="InId" />
+          </Key>
+          <Property Name="InId" Type="Int32" Nullable="false" />
+          <Property Name="InDateTime" Type="DateTime" />
+          <Property Name="TicketId" Type="Int32" />
+          <NavigationProperty Name="tblticket" Relationship="parkingModel.tblin_ibfk_1" FromRole="tblin" ToRole="tblticket" />
+        </EntityType>
+        <EntityType Name="tblout">
+          <Key>
+            <PropertyRef Name="OutId" />
+          </Key>
+          <Property Name="OutId" Type="Int32" Nullable="false" />
+          <Property Name="Out_DateTime" Type="DateTime" />
+          <Property Name="TicketId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="tblticket" Relationship="parkingModel.tblout_ibfk_1" FromRole="tblout" ToRole="tblticket" />
+          <NavigationProperty Name="tbluser" Relationship="parkingModel.tblout_ibfk_2" FromRole="tblout" ToRole="tbluser" />
+        </EntityType>
+        <EntityType Name="tblticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="Int32" Nullable="false" />
+          <Property Name="Barcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblins" Relationship="parkingModel.tblin_ibfk_1" FromRole="tblticket" ToRole="tblin" />
+          <NavigationProperty Name="tblouts" Relationship="parkingModel.tblout_ibfk_1" FromRole="tblticket" ToRole="tblout" />
+        </EntityType>
+        <Association Name="tblin_ibfk_1">
+          <End Type="parkingModel.tblticket" Role="tblticket" Multiplicity="0..1" />
+          <End Type="parkingModel.tblin" Role="tblin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="tblin">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblout_ibfk_1">
+          <End Type="parkingModel.tblticket" Role="tblticket" Multiplicity="0..1" />
+          <End Type="parkingModel.tblout" Role="tblout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="tblout">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblout_ibfk_2">
+          <End Type="parkingModel.tbluser" Role="tbluser" Multiplicity="0..1" />
+          <End Type="parkingModel.tblout" Role="tblout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbluser">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblout">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="parkingModelStoreContainer" CdmEntityContainer="parkingEntities">
+          <EntitySetMapping Name="tblusers">
+            <EntityTypeMapping TypeName="parkingModel.tbluser">
+              <MappingFragment StoreEntitySet="tbluser">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblins">
+            <EntityTypeMapping TypeName="parkingModel.tblin">
+              <MappingFragment StoreEntitySet="tblin">
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="InDateTime" ColumnName="InDateTime" />
+                <ScalarProperty Name="InId" ColumnName="InId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblouts">
+            <EntityTypeMapping TypeName="parkingModel.tblout">
+              <MappingFragment StoreEntitySet="tblout">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="Out_DateTime" ColumnName="Out-DateTime" />
+                <ScalarProperty Name="OutId" ColumnName="OutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbltickets">
+            <EntityTypeMapping TypeName="parkingModel.tblticket">
+              <MappingFragment StoreEntitySet="tblticket">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
