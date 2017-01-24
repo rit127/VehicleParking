@@ -72,6 +72,12 @@
     <Compile Include="frmMainForm.Designer.cs">
       <DependentUpon>frmMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetting.Designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUserController.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     <EmbeddedResource Include="frmMainForm.resx">
       <DependentUpon>frmMainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSetting.resx">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUserController.resx">
       <DependentUpon>frmUserController.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,7 +183,8 @@
       <DependentUpon>VechicleParking.edmx</DependentUpon>
       <LastGenOutput>VechicleParking.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\logo_parking.png" />
+    <None Include="Resources\Settings-icon1.png" />
+    <None Include="Resources\seo.png" />
     <None Include="Resources\park-and-jet-logo.png" />
     <None Include="Resources\motorbiking.png" />
     <None Include="Resources\motorbiking copy១.png" />
