@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.dateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +41,9 @@
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -55,6 +59,22 @@
             this.settingToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
+            // 
+            // menuStrip2
+            // 
+            resources.ApplyResources(this.menuStrip2, "menuStrip2");
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userToolStripMenuItem,
+            this.dateToolStripMenuItem});
+            this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip2.Name = "menuStrip2";
+            // 
+            // dateToolStripMenuItem
+            // 
+            this.dateToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            resources.ApplyResources(this.dateToolStripMenuItem, "dateToolStripMenuItem");
+            this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
+            this.dateToolStripMenuItem.Click += new System.EventHandler(this.dateToolStripMenuItem_Click);
             // 
             // fileToolStripMenuItem
             // 
@@ -93,14 +113,14 @@
             // userControllerToolStripMenuItem
             // 
             resources.ApplyResources(this.userControllerToolStripMenuItem, "userControllerToolStripMenuItem");
-            this.userControllerToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.user_icon;
+            this.userControllerToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.man;
             this.userControllerToolStripMenuItem.Name = "userControllerToolStripMenuItem";
             this.userControllerToolStripMenuItem.Click += new System.EventHandler(this.userControllerToolStripMenuItem_Click);
             // 
             // reportToolStripMenuItem
             // 
             resources.ApplyResources(this.reportToolStripMenuItem, "reportToolStripMenuItem");
-            this.reportToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.report_icon_23;
+            this.reportToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.report;
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
             // 
             // eXToolStripMenuItem
@@ -116,11 +136,18 @@
             this.settingToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.Settings_icon;
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             // 
+            // userToolStripMenuItem
+            // 
+            resources.ApplyResources(this.userToolStripMenuItem, "userToolStripMenuItem");
+            this.userToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.male_circle_512;
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            // 
             // frmMainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
@@ -128,8 +155,11 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMainForm";
+            this.Load += new System.EventHandler(this.frmMainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +177,9 @@
         private System.Windows.Forms.ToolStripMenuItem eXToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vehicleParkingToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

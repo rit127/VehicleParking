@@ -25,5 +25,10 @@ namespace VehicleParking
             this.Dispose();
             
         }
+
+        private void frmVehicleParking_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

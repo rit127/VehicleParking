@@ -67,7 +67,18 @@ namespace VehicleParking
             frmVehicleParking vcp = new frmVehicleParking();
             vcp.MdiParent = this;
             vcp.Show();
+
             
+        }
+
+        private void dateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void frmMainForm_Load(object sender, EventArgs e)
+        {
+            this.dateToolStripMenuItem.Text = DateTime.Now.ToString();
         }
     }
 }
