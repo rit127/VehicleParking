@@ -183,6 +183,7 @@
       <DependentUpon>VechicleParking.edmx</DependentUpon>
       <LastGenOutput>VechicleParking.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo_parking.png" />
     <None Include="Resources\Settings-icon1.png" />
     <None Include="Resources\seo.png" />
     <None Include="Resources\park-and-jet-logo.png" />
