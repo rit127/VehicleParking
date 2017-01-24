@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnVehicle = new System.Windows.Forms.Button();
+            this.btnLogo = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabVehicle = new System.Windows.Forms.TabPage();
-            this.btnLogo = new System.Windows.Forms.Button();
-            this.btnVehicle = new System.Windows.Forms.Button();
             this.tabLogo = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabVehicle = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,6 +55,37 @@
             this.panel1.Size = new System.Drawing.Size(253, 661);
             this.panel1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(100, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 23);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Setting";
+            // 
+            // btnVehicle
+            // 
+            this.btnVehicle.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVehicle.Location = new System.Drawing.Point(39, 133);
+            this.btnVehicle.Name = "btnVehicle";
+            this.btnVehicle.Size = new System.Drawing.Size(186, 47);
+            this.btnVehicle.TabIndex = 1;
+            this.btnVehicle.Text = "Vehicle";
+            this.btnVehicle.UseVisualStyleBackColor = true;
+            // 
+            // btnLogo
+            // 
+            this.btnLogo.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogo.Location = new System.Drawing.Point(39, 80);
+            this.btnLogo.Name = "btnLogo";
+            this.btnLogo.Size = new System.Drawing.Size(186, 47);
+            this.btnLogo.TabIndex = 0;
+            this.btnLogo.Text = "Logo";
+            this.btnLogo.UseVisualStyleBackColor = true;
+            this.btnLogo.Click += new System.EventHandler(this.btnLogo_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.tabControl1);
@@ -69,42 +100,12 @@
             this.tabControl1.Controls.Add(this.tabLogo);
             this.tabControl1.Controls.Add(this.tabVehicle);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(989, 661);
             this.tabControl1.TabIndex = 0;
-            // 
-            // tabVehicle
-            // 
-            this.tabVehicle.Location = new System.Drawing.Point(4, 22);
-            this.tabVehicle.Name = "tabVehicle";
-            this.tabVehicle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVehicle.Size = new System.Drawing.Size(981, 635);
-            this.tabVehicle.TabIndex = 1;
-            this.tabVehicle.Text = "Vehicle";
-            this.tabVehicle.UseVisualStyleBackColor = true;
-            // 
-            // btnLogo
-            // 
-            this.btnLogo.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogo.Location = new System.Drawing.Point(39, 80);
-            this.btnLogo.Name = "btnLogo";
-            this.btnLogo.Size = new System.Drawing.Size(186, 47);
-            this.btnLogo.TabIndex = 0;
-            this.btnLogo.Text = "Logo";
-            this.btnLogo.UseVisualStyleBackColor = true;
-            this.btnLogo.Click += new System.EventHandler(this.btnLogo_Click);
-            // 
-            // btnVehicle
-            // 
-            this.btnVehicle.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVehicle.Location = new System.Drawing.Point(39, 133);
-            this.btnVehicle.Name = "btnVehicle";
-            this.btnVehicle.Size = new System.Drawing.Size(186, 47);
-            this.btnVehicle.TabIndex = 1;
-            this.btnVehicle.Text = "Vehicle";
-            this.btnVehicle.UseVisualStyleBackColor = true;
             // 
             // tabLogo
             // 
@@ -116,22 +117,22 @@
             this.tabLogo.Text = "Logo";
             this.tabLogo.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // tabVehicle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Candara", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(100, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 26);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Setting";
+            this.tabVehicle.Location = new System.Drawing.Point(4, 22);
+            this.tabVehicle.Name = "tabVehicle";
+            this.tabVehicle.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVehicle.Size = new System.Drawing.Size(981, 635);
+            this.tabVehicle.TabIndex = 1;
+            this.tabVehicle.Text = "Vehicle";
+            this.tabVehicle.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::VehicleParking.Properties.Resources.Settings_icon1;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(33, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(41, 36);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
