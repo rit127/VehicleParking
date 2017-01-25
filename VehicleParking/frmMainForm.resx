@@ -342,12 +342,6 @@
   <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;vehicleParkingToolStripMenuItem.Name" xml:space="preserve">
-    <value>vehicleParkingToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;vehicleParkingToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;userControllerToolStripMenuItem.Name" xml:space="preserve">
     <value>userControllerToolStripMenuItem</value>
   </data>
@@ -358,12 +352,6 @@
     <value>reportToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;reportToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;eXToolStripMenuItem.Name" xml:space="preserve">
-    <value>eXToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;eXToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;settingToolStripMenuItem.Name" xml:space="preserve">
@@ -382,6 +370,18 @@
     <value>dateToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;dateToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vehicleParkingToolStripMenuItem.Name" xml:space="preserve">
+    <value>vehicleParkingToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;vehicleParkingToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;eXToolStripMenuItem.Name" xml:space="preserve">
+    <value>eXToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;eXToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

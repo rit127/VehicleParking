@@ -87,5 +87,12 @@ namespace VehicleParking
             fst.MdiParent = this;
             fst.Show();
         }
+
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReport frp = new frmReport();
+            frp.MdiParent = this;
+            frp.Show();
+        }
     }
 }

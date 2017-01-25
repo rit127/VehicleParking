@@ -1,91 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="parkingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="tblin">
+  <EntityType Name="pk_config">
     <Key>
-      <PropertyRef Name="InId" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="InId" Type="int" Nullable="false" />
-    <Property Name="InDateTime" Type="datetime" Precision="0" />
-    <Property Name="TicketId" Type="int" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="key" Type="varchar" MaxLength="255" />
+    <Property Name="value" Type="varchar" MaxLength="255" />
+    <Property Name="create_date" Type="timestamp" Precision="0" />
   </EntityType>
-  <EntityType Name="tblout">
+  <EntityType Name="pk_config_log">
     <Key>
-      <PropertyRef Name="OutId" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="OutId" Type="int" Nullable="false" />
-    <Property Name="Out-DateTime" Type="datetime" Precision="0" />
-    <Property Name="TicketId" Type="int" />
-    <Property Name="UserId" Type="int" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="config_id" Type="int" />
+    <Property Name="key" Type="varchar" MaxLength="255" />
+    <Property Name="value" Type="varchar" MaxLength="255" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
   </EntityType>
-  <EntityType Name="tblticket">
+  <EntityType Name="pk_loging_history">
     <Key>
-      <PropertyRef Name="TicketId" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="TicketId" Type="int" Nullable="false" />
-    <Property Name="Barcode" Type="varchar" MaxLength="255" />
-    <Property Name="Image" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="login_date" Type="timestamp" Precision="0" />
+    <Property Name="logout__date" Type="timestamp" Precision="0" />
   </EntityType>
-  <EntityType Name="tbluser">
+  <EntityType Name="pk_users">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="255" />
     <Property Name="password" Type="varchar" MaxLength="255" />
-    <Property Name="UserType" Type="varchar" MaxLength="255" />
+    <Property Name="activate" Type="tinyint" />
+    <Property Name="active" Type="tinyint" />
+    <Property Name="avatar" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="date_register" Type="timestamp" Precision="0" />
+    <Property Name="last_login" Type="timestamp" Precision="0" />
+    <Property Name="role" Type="varchar" MaxLength="255" />
   </EntityType>
-  <Association Name="tblin_ibfk_1">
-    <End Role="tblticket" Type="Self.tblticket" Multiplicity="0..1" />
-    <End Role="tblin" Type="Self.tblin" Multiplicity="*" />
+  <EntityType Name="pk_vehicle_in">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ticket_id" Type="varchar" MaxLength="255" />
+    <Property Name="plate_number_in" Type="varchar" MaxLength="255" />
+    <Property Name="date_in" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="pk_vehicle_out">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="ticketid" Type="varchar" MaxLength="255" />
+    <Property Name="plate_number_out" Type="varchar" MaxLength="255" />
+    <Property Name="date_out" Type="timestamp" Precision="0" />
+    <Property Name="status" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="pk_config_log_ibfk_1">
+    <End Role="pk_config" Type="Self.pk_config" Multiplicity="0..1" />
+    <End Role="pk_config_log" Type="Self.pk_config_log" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tblticket">
-        <PropertyRef Name="TicketId" />
-      </Principal>
-      <Dependent Role="tblin">
-        <PropertyRef Name="TicketId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="tblout_ibfk_1">
-    <End Role="tblticket" Type="Self.tblticket" Multiplicity="0..1" />
-    <End Role="tblout" Type="Self.tblout" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblticket">
-        <PropertyRef Name="TicketId" />
-      </Principal>
-      <Dependent Role="tblout">
-        <PropertyRef Name="TicketId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="tblout_ibfk_2">
-    <End Role="tbluser" Type="Self.tbluser" Multiplicity="0..1" />
-    <End Role="tblout" Type="Self.tblout" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbluser">
+      <Principal Role="pk_config">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="tblout">
-        <PropertyRef Name="UserId" />
+      <Dependent Role="pk_config_log">
+        <PropertyRef Name="config_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_loging_history_ibfk_1">
+    <End Role="pk_users" Type="Self.pk_users" Multiplicity="0..1" />
+    <End Role="pk_loging_history" Type="Self.pk_loging_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pk_users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pk_loging_history">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_vehicle_out_ibfk_1">
+    <End Role="pk_users" Type="Self.pk_users" Multiplicity="0..1" />
+    <End Role="pk_vehicle_out" Type="Self.pk_vehicle_out" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pk_users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pk_vehicle_out">
+        <PropertyRef Name="user_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="parkingModelStoreContainer">
-    <EntitySet Name="tblin" EntityType="Self.tblin" Schema="parking" store:Type="Tables" />
-    <EntitySet Name="tblout" EntityType="Self.tblout" Schema="parking" store:Type="Tables" />
-    <EntitySet Name="tblticket" EntityType="Self.tblticket" Schema="parking" store:Type="Tables" />
-    <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="parking" store:Type="Tables" />
-    <AssociationSet Name="tblin_ibfk_1" Association="Self.tblin_ibfk_1">
-      <End Role="tblticket" EntitySet="tblticket" />
-      <End Role="tblin" EntitySet="tblin" />
+    <EntitySet Name="pk_config" EntityType="Self.pk_config" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="pk_config_log" EntityType="Self.pk_config_log" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="pk_loging_history" EntityType="Self.pk_loging_history" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="pk_users" EntityType="Self.pk_users" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="pk_vehicle_in" EntityType="Self.pk_vehicle_in" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="pk_vehicle_out" EntityType="Self.pk_vehicle_out" Schema="parking" store:Type="Tables" />
+    <AssociationSet Name="pk_config_log_ibfk_1" Association="Self.pk_config_log_ibfk_1">
+      <End Role="pk_config" EntitySet="pk_config" />
+      <End Role="pk_config_log" EntitySet="pk_config_log" />
     </AssociationSet>
-    <AssociationSet Name="tblout_ibfk_1" Association="Self.tblout_ibfk_1">
-      <End Role="tblticket" EntitySet="tblticket" />
-      <End Role="tblout" EntitySet="tblout" />
+    <AssociationSet Name="pk_loging_history_ibfk_1" Association="Self.pk_loging_history_ibfk_1">
+      <End Role="pk_users" EntitySet="pk_users" />
+      <End Role="pk_loging_history" EntitySet="pk_loging_history" />
     </AssociationSet>
-    <AssociationSet Name="tblout_ibfk_2" Association="Self.tblout_ibfk_2">
-      <End Role="tbluser" EntitySet="tbluser" />
-      <End Role="tblout" EntitySet="tblout" />
+    <AssociationSet Name="pk_vehicle_out_ibfk_1" Association="Self.pk_vehicle_out_ibfk_1">
+      <End Role="pk_users" EntitySet="pk_users" />
+      <End Role="pk_vehicle_out" EntitySet="pk_vehicle_out" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

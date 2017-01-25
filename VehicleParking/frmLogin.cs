@@ -28,25 +28,25 @@ namespace VehicleParking
         private void btnLogin_Click(object sender, EventArgs e)
         {
             
-            tbluser user = objdb.tblusers.SingleOrDefault(item => item.username == txtUsername.Text);
+            //tbluser user = objdb.tblusers.SingleOrDefault(item => item.username == txtUsername.Text);
 
-            if(user == null)
-            {
-                MessageBox.Show("Wrong Username or Password !!!");
-            }
-            else
-            {
-                if(user.password == txtPassword.Text)
-                {
-                    this.Hide();
-                    frmMainForm frmMain = new frmMainForm();
-                    frmMain.Visible = true;
-                }
-                else
-                {
-                    MessageBox.Show("Wrong Username or Password !!!");
-                }
-            }
+            //if(user == null)
+            //{
+            //    MessageBox.Show("Wrong Username or Password !!!");
+            //}
+            //else
+            //{
+            //    if(user.password == txtPassword.Text)
+            //    {
+            //        this.Hide();
+            //        frmMainForm frmMain = new frmMainForm();
+            //        frmMain.Visible = true;
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Wrong Username or Password !!!");
+            //    }
+            //}
         }
     }
 }
