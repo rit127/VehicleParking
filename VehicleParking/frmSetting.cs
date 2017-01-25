@@ -19,6 +19,18 @@ namespace VehicleParking
 
         private void btnLogo_Click(object sender, EventArgs e)
         {
+            TabPage tp = tabControl1.TabPages[0];
+            tabControl1.SelectedTab = tp;
+        }
+
+        private void btnVehicle_Click(object sender, EventArgs e)
+        {
+            TabPage tp = tabControl1.TabPages[1];
+            tabControl1.SelectedTab = tp;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

@@ -80,5 +80,12 @@ namespace VehicleParking
         {
             this.dateToolStripMenuItem.Text = DateTime.Now.ToString();
         }
+
+        private void settingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSetting fst = new frmSetting();
+            fst.MdiParent = this;
+            fst.Show();
+        }
     }
 }
