@@ -12,19 +12,13 @@ namespace VehicleParking.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblticket
+    public partial class pk_loging_history
     {
-        public tblticket()
-        {
-            this.tblins = new HashSet<tblin>();
-            this.tblouts = new HashSet<tblout>();
-        }
+        public int id { get; set; }
+        public Nullable<int> user_id { get; set; }
+        public Nullable<System.DateTime> login_date { get; set; }
+        public Nullable<System.DateTime> logout__date { get; set; }
     
-        public int TicketId { get; set; }
-        public string Barcode { get; set; }
-        public string Image { get; set; }
-    
-        public virtual ICollection<tblin> tblins { get; set; }
-        public virtual ICollection<tblout> tblouts { get; set; }
+        public virtual pk_users pk_users { get; set; }
     }
 }

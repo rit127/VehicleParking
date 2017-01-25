@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehicleParkingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logsHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userControllerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +52,6 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.vehicleParkingToolStripMenuItem,
-            this.logsHistoryToolStripMenuItem,
             this.userControllerToolStripMenuItem,
             this.reportToolStripMenuItem,
             this.eXToolStripMenuItem,
@@ -63,12 +62,18 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordToolStripMenuItem,
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.documenten;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            resources.ApplyResources(this.changePasswordToolStripMenuItem, "changePasswordToolStripMenuItem");
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             // 
             // logoutToolStripMenuItem
             // 
@@ -87,12 +92,6 @@
             this.vehicleParkingToolStripMenuItem.Image = global::VehicleParking.Properties.Resources._1d1ae63570ea78b7b8b6fac1e179e7a0_scooter;
             this.vehicleParkingToolStripMenuItem.Name = "vehicleParkingToolStripMenuItem";
             this.vehicleParkingToolStripMenuItem.Click += new System.EventHandler(this.vehicleParkingToolStripMenuItem_Click);
-            // 
-            // logsHistoryToolStripMenuItem
-            // 
-            resources.ApplyResources(this.logsHistoryToolStripMenuItem, "logsHistoryToolStripMenuItem");
-            this.logsHistoryToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.loggly_icon_search;
-            this.logsHistoryToolStripMenuItem.Name = "logsHistoryToolStripMenuItem";
             // 
             // userControllerToolStripMenuItem
             // 
@@ -172,7 +171,6 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem logsHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userControllerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXToolStripMenuItem;
@@ -182,5 +180,6 @@
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }

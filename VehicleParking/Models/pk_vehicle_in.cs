@@ -12,12 +12,12 @@ namespace VehicleParking.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblin
+    public partial class pk_vehicle_in
     {
-        public int InId { get; set; }
-        public Nullable<System.DateTime> InDateTime { get; set; }
-        public Nullable<int> TicketId { get; set; }
-    
-        public virtual tblticket tblticket { get; set; }
+        public int id { get; set; }
+        public string ticket_id { get; set; }
+        public string plate_number_in { get; set; }
+        public Nullable<System.DateTime> date_in { get; set; }
+        public string status { get; set; }
     }
 }

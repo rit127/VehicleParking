@@ -5,13 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3db5c341867a436eafefe1e60cd7187a" Name="Diagram1" ZoomLevel="73">
-        <EntityTypeShape EntityType="parkingModel.tbluser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="parkingModel.tblin" Width="1.5" PointX="5.625" PointY="5.5" />
-        <EntityTypeShape EntityType="parkingModel.tblout" Width="1.5" PointX="5.625" PointY="1.5" />
-        <EntityTypeShape EntityType="parkingModel.tblticket" Width="1.5" PointX="3.375" PointY="2.375" />
-        <AssociationConnector Association="parkingModel.tblin_ibfk_1" />
-        <AssociationConnector Association="parkingModel.tblout_ibfk_1" />
-        <AssociationConnector Association="parkingModel.tblout_ibfk_2" />
+        <EntityTypeShape EntityType="parkingModel.pk_config" Width="1.5" PointX="5" PointY="1" />
+        <EntityTypeShape EntityType="parkingModel.pk_config_log" Width="1.5" PointX="1.875" PointY="1.125" />
+        <EntityTypeShape EntityType="parkingModel.pk_loging_history" Width="1.5" PointX="11" PointY="4.25" />
+        <EntityTypeShape EntityType="parkingModel.pk_users" Width="1.5" PointX="7" PointY="1.5" />
+        <EntityTypeShape EntityType="parkingModel.pk_vehicle_in" Width="1.5" PointX="4.25" PointY="4.25" />
+        <EntityTypeShape EntityType="parkingModel.pk_vehicle_out" Width="1.5" PointX="11" PointY="1.125" />
+        <AssociationConnector Association="parkingModel.pk_config_log_ibfk_1" />
+        <AssociationConnector Association="parkingModel.pk_loging_history_ibfk_1" />
+        <AssociationConnector Association="parkingModel.pk_vehicle_out_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

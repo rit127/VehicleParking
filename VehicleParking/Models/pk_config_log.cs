@@ -12,18 +12,14 @@ namespace VehicleParking.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbluser
+    public partial class pk_config_log
     {
-        public tbluser()
-        {
-            this.tblouts = new HashSet<tblout>();
-        }
-    
         public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string UserType { get; set; }
+        public Nullable<int> config_id { get; set; }
+        public string key { get; set; }
+        public string value { get; set; }
+        public Nullable<System.DateTime> update_date { get; set; }
     
-        public virtual ICollection<tblout> tblouts { get; set; }
+        public virtual pk_config pk_config { get; set; }
     }
 }

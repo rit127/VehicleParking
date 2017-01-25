@@ -142,15 +142,6 @@
   <data name="vehicleParkingToolStripMenuItem.Text" xml:space="preserve">
     <value>Vehicle Parking</value>
   </data>
-  <data name="logsHistoryToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 12pt</value>
-  </data>
-  <data name="logsHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 24</value>
-  </data>
-  <data name="logsHistoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Logs History</value>
-  </data>
   <data name="userControllerToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 12pt</value>
   </data>
@@ -219,11 +210,20 @@
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="changePasswordToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9.75pt</value>
+  </data>
+  <data name="changePasswordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
+  </data>
+  <data name="changePasswordToolStripMenuItem.Text" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
   <data name="logoutToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt</value>
   </data>
   <data name="logoutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="logoutToolStripMenuItem.Text" xml:space="preserve">
     <value>Logout</value>
@@ -232,7 +232,7 @@
     <value>Tahoma, 9.75pt</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>179, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>Exit</value>
@@ -244,7 +244,7 @@
     <value>Bottom</value>
   </data>
   <data name="menuStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 731</value>
+    <value>0, 704</value>
   </data>
   <data name="menuStrip2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 3, 0, 3</value>
@@ -304,7 +304,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1280, 760</value>
+    <value>1280, 733</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt</value>
@@ -324,6 +324,12 @@
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;changePasswordToolStripMenuItem.Name" xml:space="preserve">
+    <value>changePasswordToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;changePasswordToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;logoutToolStripMenuItem.Name" xml:space="preserve">
     <value>logoutToolStripMenuItem</value>
   </data>
@@ -340,12 +346,6 @@
     <value>vehicleParkingToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;vehicleParkingToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;logsHistoryToolStripMenuItem.Name" xml:space="preserve">
-    <value>logsHistoryToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;logsHistoryToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;userControllerToolStripMenuItem.Name" xml:space="preserve">

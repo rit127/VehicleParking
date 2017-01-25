@@ -25,9 +25,11 @@ namespace VehicleParking.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<tbluser> tblusers { get; set; }
-        public DbSet<tblin> tblins { get; set; }
-        public DbSet<tblout> tblouts { get; set; }
-        public DbSet<tblticket> tbltickets { get; set; }
+        public DbSet<pk_config> pk_config { get; set; }
+        public DbSet<pk_config_log> pk_config_log { get; set; }
+        public DbSet<pk_loging_history> pk_loging_history { get; set; }
+        public DbSet<pk_users> pk_users { get; set; }
+        public DbSet<pk_vehicle_in> pk_vehicle_in { get; set; }
+        public DbSet<pk_vehicle_out> pk_vehicle_out { get; set; }
     }
 }

@@ -91,16 +91,22 @@
       <DependentUpon>frmVehicleParking.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalVaraiable.cs" />
-    <Compile Include="Models\tblin.cs">
+    <Compile Include="Models\pk_config.cs">
       <DependentUpon>VechicleParking.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblout.cs">
+    <Compile Include="Models\pk_config_log.cs">
       <DependentUpon>VechicleParking.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblticket.cs">
+    <Compile Include="Models\pk_loging_history.cs">
       <DependentUpon>VechicleParking.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbluser.cs">
+    <Compile Include="Models\pk_users.cs">
+      <DependentUpon>VechicleParking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pk_vehicle_in.cs">
+      <DependentUpon>VechicleParking.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pk_vehicle_out.cs">
       <DependentUpon>VechicleParking.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VechicleParking.Context.cs">
@@ -205,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
