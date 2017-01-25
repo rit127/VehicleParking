@@ -105,7 +105,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Powered by AENC";
+            this.label1.Text = "Powered by AE&&C";
             // 
             // frmLogin
             // 
