@@ -71,3 +71,5 @@ C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.Pr
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmMainForm.km.resources
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csproj.GenerateResource.Cache
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\km\VehicleParking.resources.dll
+C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmReport.resources
+C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache
