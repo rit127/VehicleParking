@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,31 @@ namespace VehicleParking
     public class GlobalVaraiable
     {
         public static bool dis;
+
+        public static string MysqlConnect()
+        {
+            string path = "MysqlConnection.txt";
+
+            FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read);
+            StreamReader reader = new StreamReader(fs);
+
+            string myConReader = reader.ReadToEnd();
+            return myConReader;
+        }
+        
+        public static string EntityConnectionMysql()
+        {
+            var entityConnectionStringBuilder = new System.Data.EntityClient.EntityConnectionStringBuilder();
+            entityConnectionStringBuilder.Provider = "MySql.Data.MySqlClient";
+
+            entityConnectionStringBuilder.ProviderConnectionString = MysqlConnect();
+            //server=localhost;user id=root;password=Sothearith;persistsecurityinfo=True;database=parking
+            entityConnectionStringBuilder.Metadata = "res://*/Models.VechicleParking.csdl|res://*/Models.VechicleParking.ssdl|res://*/Models.VechicleParking.msl";
+            return entityConnectionStringBuilder.ToString();
+        }
+
+        
+        
     }
     
 }

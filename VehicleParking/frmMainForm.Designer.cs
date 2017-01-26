@@ -32,7 +32,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehicleParkingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userControllerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +42,6 @@
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabFile = new System.Windows.Forms.TabPage();
             this.tabVehicle = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -66,7 +64,7 @@
             this.tabUser = new System.Windows.Forms.TabPage();
             this.txtSearchUser = new System.Windows.Forms.TextBox();
             this.btnResetUser = new System.Windows.Forms.Button();
-            this.btnCreateUser = new System.Windows.Forms.Button();
+            this.btnNewUser = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.btnEditUser = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -82,7 +80,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridUser = new System.Windows.Forms.DataGridView();
             this.tabReport = new System.Windows.Forms.TabPage();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -133,6 +131,12 @@
             this.btnVehicle = new System.Windows.Forms.Button();
             this.btnLogo = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -148,7 +152,7 @@
             this.tabUser.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridUser)).BeginInit();
             this.tabReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabSetting.SuspendLayout();
@@ -179,7 +183,6 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changePasswordToolStripMenuItem,
-            this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.documenten;
@@ -190,11 +193,6 @@
             // 
             resources.ApplyResources(this.changePasswordToolStripMenuItem, "changePasswordToolStripMenuItem");
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            resources.ApplyResources(this.logoutToolStripMenuItem, "logoutToolStripMenuItem");
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             // 
             // exitToolStripMenuItem
             // 
@@ -261,7 +259,6 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabFile);
             this.tabControl1.Controls.Add(this.tabVehicle);
             this.tabControl1.Controls.Add(this.tabUser);
             this.tabControl1.Controls.Add(this.tabReport);
@@ -269,12 +266,6 @@
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            // 
-            // tabFile
-            // 
-            this.tabFile.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.tabFile, "tabFile");
-            this.tabFile.Name = "tabFile";
             // 
             // tabVehicle
             // 
@@ -411,13 +402,13 @@
             this.tabUser.BackColor = System.Drawing.SystemColors.Control;
             this.tabUser.Controls.Add(this.txtSearchUser);
             this.tabUser.Controls.Add(this.btnResetUser);
-            this.tabUser.Controls.Add(this.btnCreateUser);
+            this.tabUser.Controls.Add(this.btnNewUser);
             this.tabUser.Controls.Add(this.label9);
             this.tabUser.Controls.Add(this.btnEditUser);
             this.tabUser.Controls.Add(this.groupBox3);
             this.tabUser.Controls.Add(this.btnDeleteUser);
             this.tabUser.Controls.Add(this.label14);
-            this.tabUser.Controls.Add(this.dataGridView1);
+            this.tabUser.Controls.Add(this.dataGridUser);
             resources.ApplyResources(this.tabUser, "tabUser");
             this.tabUser.Name = "tabUser";
             // 
@@ -432,11 +423,12 @@
             this.btnResetUser.Name = "btnResetUser";
             this.btnResetUser.UseVisualStyleBackColor = true;
             // 
-            // btnCreateUser
+            // btnNewUser
             // 
-            resources.ApplyResources(this.btnCreateUser, "btnCreateUser");
-            this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnNewUser, "btnNewUser");
+            this.btnNewUser.Name = "btnNewUser";
+            this.btnNewUser.UseVisualStyleBackColor = true;
+            this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
             // 
             // label9
             // 
@@ -448,6 +440,7 @@
             resources.ApplyResources(this.btnEditUser, "btnEditUser");
             this.btnEditUser.Name = "btnEditUser";
             this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // groupBox3
             // 
@@ -533,11 +526,25 @@
             resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
             // 
-            // dataGridView1
+            // dataGridUser
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridUser.AllowUserToAddRows = false;
+            this.dataGridUser.AllowUserToDeleteRows = false;
+            this.dataGridUser.AllowUserToResizeColumns = false;
+            this.dataGridUser.AllowUserToResizeRows = false;
+            this.dataGridUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column5,
+            this.Column4,
+            this.Column6});
+            resources.ApplyResources(this.dataGridUser, "dataGridUser");
+            this.dataGridUser.MultiSelect = false;
+            this.dataGridUser.Name = "dataGridUser";
+            this.dataGridUser.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // tabReport
             // 
@@ -864,6 +871,37 @@
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.TabStop = false;
             // 
+            // Column1
+            // 
+            resources.ApplyResources(this.Column1, "Column1");
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            resources.ApplyResources(this.Column2, "Column2");
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            resources.ApplyResources(this.Column3, "Column3");
+            this.Column3.Name = "Column3";
+            // 
+            // Column5
+            // 
+            resources.ApplyResources(this.Column5, "Column5");
+            this.Column5.Name = "Column5";
+            // 
+            // Column4
+            // 
+            resources.ApplyResources(this.Column4, "Column4");
+            this.Column4.Name = "Column4";
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.Column6, "Column6");
+            this.Column6.Name = "Column6";
+            // 
             // frmMainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -899,7 +937,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureboxUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridUser)).EndInit();
             this.tabReport.ResumeLayout(false);
             this.tabReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -923,7 +961,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem userControllerToolStripMenuItem;
@@ -937,7 +974,6 @@
         private System.Windows.Forms.ToolStripMenuItem vehicleParkingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabFile;
         private System.Windows.Forms.TabPage tabVehicle;
         private System.Windows.Forms.TabPage tabUser;
         private System.Windows.Forms.TabPage tabReport;
@@ -962,7 +998,7 @@
         private System.Windows.Forms.Button btnValidate;
         private System.Windows.Forms.TextBox txtSearchUser;
         private System.Windows.Forms.Button btnResetUser;
-        private System.Windows.Forms.Button btnCreateUser;
+        private System.Windows.Forms.Button btnNewUser;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtConfirmPass;
         private System.Windows.Forms.Label label11;
@@ -978,7 +1014,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridUser;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -1027,5 +1063,11 @@
         private System.Windows.Forms.Button btnVehicle;
         private System.Windows.Forms.Button btnLogo;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

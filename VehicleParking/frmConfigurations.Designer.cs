@@ -124,6 +124,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(316, 29);
             this.txtPassword.TabIndex = 7;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // cbConnectionString
             // 
@@ -154,6 +155,7 @@
             this.btnTestConnection.TabIndex = 11;
             this.btnTestConnection.Text = "Test Connection";
             this.btnTestConnection.UseVisualStyleBackColor = true;
+            this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
             // 
             // txtSaveConnection
             // 
@@ -164,12 +166,13 @@
             this.txtSaveConnection.TabIndex = 12;
             this.txtSaveConnection.Text = "Save Connection";
             this.txtSaveConnection.UseVisualStyleBackColor = true;
+            this.txtSaveConnection.Click += new System.EventHandler(this.txtSaveConnection_Click);
             // 
             // frmConfigurations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 381);
+            this.ClientSize = new System.Drawing.Size(569, 381);
             this.Controls.Add(this.txtSaveConnection);
             this.Controls.Add(this.btnTestConnection);
             this.Controls.Add(this.txtConnectionString);
@@ -183,7 +186,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDatabaseName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConfigurations";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmConfigurations";
             this.Load += new System.EventHandler(this.frmConfigurations_Load);
             this.ResumeLayout(false);

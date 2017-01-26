@@ -15,8 +15,12 @@ namespace VehicleParking.Models
     
     public partial class parkingEntities : DbContext
     {
-        public parkingEntities()
-            : base("name=parkingEntities")
+    
+        public parkingEntities(string con)
+            
+            : base(con)
+            //: base(string.Format(@"metadata = res://*/Models.VechicleParking.csdl|res://*/Models.VechicleParking.ssdl|res://*/Models.VechicleParking.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;" + GlobalVaraiable.MysqlConnect() +"persistsecurityinfo=True&quot; providerName=System.Data.EntityClient"))
+            //: base(string.Format(@"metadata=res://*/Models.VechicleParking.csdl|res://*/Models.VechicleParking.ssdl|res://*/Models.VechicleParking.msl;provider=MySql.Data.MySqlClient;provider connection string=server='localhost;user id=root;password=Sothearith;persistsecurityinfo=True;database=parking providerName' = System.Data.EntityClient"))
         {
         }
     

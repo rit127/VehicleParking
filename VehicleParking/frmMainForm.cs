@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,15 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VehicleParking.Models;
 
 namespace VehicleParking
 {
     public partial class frmMainForm : Form
     {
-        
+        parkingEntities objdb;
         public frmMainForm()
         {
             InitializeComponent();
+            
+            objdb = new parkingEntities(GlobalVaraiable.EntityConnectionMysql());
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -25,7 +29,7 @@ namespace VehicleParking
         frmUserController uct = null;
         private void userControllerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TabPage tp = tabControl1.TabPages[2];
+            TabPage tp = tabControl1.TabPages[1];
             tabControl1.SelectedTab = tp;
 
             //if (uct == null)
@@ -59,6 +63,7 @@ namespace VehicleParking
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+            Program.MysqlCon.Close();
         }
         public void setMenu(bool tf)
         {
@@ -71,7 +76,7 @@ namespace VehicleParking
             //vcp.MdiParent = this;
             //vcp.Show();
 
-            TabPage tp = tabControl1.TabPages[1];
+            TabPage tp = tabControl1.TabPages[0];
             tabControl1.SelectedTab = tp;
 
         }
@@ -80,10 +85,33 @@ namespace VehicleParking
         {
             
         }
+        //Tab User
+        void setGroupBoxEnable(bool tf)
+        {
+            txtUsername.Enabled = tf;
+            txtPassword.Enabled = tf;
+            txtConfirmPass.Enabled = tf;
+            comboRole.Enabled = tf;
+        }
 
+        void setButtomUserEnable(bool tf)
+        {
+            btnEditUser.Enabled = tf;
+            btnDeleteUser.Enabled = tf;
+            btnResetUser.Enabled = tf;
+        }
         private void frmMainForm_Load(object sender, EventArgs e)
         {
             this.dateToolStripMenuItem.Text = DateTime.Now.ToString();
+
+            //Tab User
+            List<pk_users> user = objdb.pk_users.ToList();
+            foreach(var item in user)
+            {
+                dataGridUser.Rows.Add(item.username, item.activate, item.date_register, item.phone, item.role, item.last_login);
+            }
+            setGroupBoxEnable(false);
+            setButtomUserEnable(false);
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,7 +120,7 @@ namespace VehicleParking
             //fst.MdiParent = this;
             //fst.Show();
 
-            TabPage tp = tabControl1.TabPages[4];
+            TabPage tp = tabControl1.TabPages[3];
             tabControl1.SelectedTab = tp;
 
         }
@@ -103,7 +131,7 @@ namespace VehicleParking
             //frp.MdiParent = this;
             //frp.Show();
 
-            TabPage tp = tabControl1.TabPages[3];
+            TabPage tp = tabControl1.TabPages[2];
             tabControl1.SelectedTab = tp;
 
         }
@@ -119,6 +147,45 @@ namespace VehicleParking
         {
             TabPage tp = tabControl2.TabPages[1];
             tabControl2.SelectedTab = tp;
+        }
+
+        private void btnNewUser_Click(object sender, EventArgs e)
+        {
+            if(btnNewUser.Text.Equals("New"))
+            {
+                btnNewUser.Text = "Create";
+                setGroupBoxEnable(true);
+                txtUsername.Focus();
+                btnEditUser.Enabled = true;
+                btnEditUser.Text = "Cancel";
+            }
+            else if(btnNewUser.Text.Equals("Create"))
+            {
+                try
+                {
+                    if(txtPassword.Text == txtConfirmPass.Text)
+                    {
+
+                    }
+                }
+                catch(MySqlException mysqlEx)
+                {
+
+                }
+                btnNewUser.Text = "New";
+
+            }
+        }
+
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            if(btnEditUser.Text.Equals("Cancel"))
+            {
+                btnNewUser.Text = "New";
+                btnEditUser.Text = "Edit";
+                btnEditUser.Enabled = false;
+                setGroupBoxEnable(false);
+            }
         }
     }
 }

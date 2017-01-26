@@ -26,6 +26,15 @@ namespace VehicleParking
         {
             this.Close();
 
+
+        }
+        void setGroupBoxEnable(bool tf)
+        {
+
+        }
+        private void frmUserController_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

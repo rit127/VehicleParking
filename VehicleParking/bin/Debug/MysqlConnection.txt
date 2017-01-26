@@ -1,0 +1,7 @@
+server=localhost;uid=root;pwd=Sothearith;database=parking;
+
+
+
+
+
+
