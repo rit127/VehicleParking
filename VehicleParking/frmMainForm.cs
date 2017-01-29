@@ -14,19 +14,19 @@ namespace VehicleParking
 {
     public partial class frmMainForm : Form
     {
-        parkingEntities objdb;
+        parkingsEntities objdb;
         public frmMainForm()
         {
             InitializeComponent();
-            
-            objdb = new parkingEntities(GlobalVaraiable.EntityConnectionMysql());
+
+            objdb = new parkingsEntities(GlobalVaraiable.EntityConnectionMysql());
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-        frmUserController uct = null;
+
         private void userControllerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TabPage tp = tabControl1.TabPages[1];
@@ -149,6 +149,8 @@ namespace VehicleParking
             tabControl2.SelectedTab = tp;
         }
 
+
+        //User Menu
         private void btnNewUser_Click(object sender, EventArgs e)
         {
             if(btnNewUser.Text.Equals("New"))
@@ -158,13 +160,30 @@ namespace VehicleParking
                 txtUsername.Focus();
                 btnEditUser.Enabled = true;
                 btnEditUser.Text = "Cancel";
+                
             }
             else if(btnNewUser.Text.Equals("Create"))
             {
                 try
                 {
-                    if(txtPassword.Text == txtConfirmPass.Text)
+                    pk_users user = new pk_users();
+
+                    if (txtPassword.Text == txtConfirmPass.Text)
                     {
+                        
+                        user.username = txtUsername.Text;
+                        user.password = txtPassword.Text;
+                        user.role = comboRole.Text;
+                        user.activate = true;
+                        user.active = false;                        
+                        
+                        user.date_register = DateTime.Now;
+                        user.last_login = DateTime.Now;
+                        
+                        objdb.pk_users.Add(user);
+                        objdb.SaveChanges();                        
+                        MessageBox.Show("Create User Successfully!!!");
+                        //LoadToGrid();
 
                     }
                 }
@@ -184,8 +203,36 @@ namespace VehicleParking
                 btnNewUser.Text = "New";
                 btnEditUser.Text = "Edit";
                 btnEditUser.Enabled = false;
+                btnEditUser.Text = "Update";
                 setGroupBoxEnable(false);
+                
+            }
+            else if (btnEditUser.Text.Equals("Update"))
+            {
+                try
+                {
+                    pk_users user = new pk_users();
+                    objdb.pk_users.First(i => i.Id == user.Id);
+
+                    user.username = txtUsername.Text;
+                    user.password = txtPassword.Text;
+                    user.password = txtConfirmPass.Text;
+                    user.role = comboRole.Text;
+
+                    objdb.SaveChanges();
+                    MessageBox.Show("Update Successfully!!!");
+                }
+                catch (MySqlException mysqlEx)
+                {
+
+                }
+                btnEditUser.Text = "Edit";
             }
         }
+
+        private void LoadToGrid()
+        {
+
+        }        
     }
 }

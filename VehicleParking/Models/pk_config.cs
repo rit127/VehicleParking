@@ -14,16 +14,9 @@ namespace VehicleParking.Models
     
     public partial class pk_config
     {
-        public pk_config()
-        {
-            this.pk_config_log = new HashSet<pk_config_log>();
-        }
-    
-        public int id { get; set; }
+        public long Id { get; set; }
         public string key { get; set; }
         public string value { get; set; }
-        public Nullable<System.DateTime> create_date { get; set; }
-    
-        public virtual ICollection<pk_config_log> pk_config_log { get; set; }
+        public System.DateTime create_date { get; set; }
     }
 }

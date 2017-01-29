@@ -14,24 +14,15 @@ namespace VehicleParking.Models
     
     public partial class pk_users
     {
-        public pk_users()
-        {
-            this.pk_loging_history = new HashSet<pk_loging_history>();
-            this.pk_vehicle_out = new HashSet<pk_vehicle_out>();
-        }
-    
-        public int id { get; set; }
+        public long Id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public Nullable<sbyte> activate { get; set; }
-        public Nullable<sbyte> active { get; set; }
+        public bool activate { get; set; }
+        public bool active { get; set; }
         public string avatar { get; set; }
         public string phone { get; set; }
-        public Nullable<System.DateTime> date_register { get; set; }
-        public Nullable<System.DateTime> last_login { get; set; }
+        public System.DateTime date_register { get; set; }
+        public System.DateTime last_login { get; set; }
         public string role { get; set; }
-    
-        public virtual ICollection<pk_loging_history> pk_loging_history { get; set; }
-        public virtual ICollection<pk_vehicle_out> pk_vehicle_out { get; set; }
     }
 }

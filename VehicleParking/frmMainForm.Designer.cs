@@ -81,6 +81,12 @@
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.dataGridUser = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabReport = new System.Windows.Forms.TabPage();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -131,12 +137,6 @@
             this.btnVehicle = new System.Windows.Forms.Button();
             this.btnLogo = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -546,6 +546,37 @@
             this.dataGridUser.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
+            // Column1
+            // 
+            resources.ApplyResources(this.Column1, "Column1");
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            resources.ApplyResources(this.Column2, "Column2");
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            resources.ApplyResources(this.Column3, "Column3");
+            this.Column3.Name = "Column3";
+            // 
+            // Column5
+            // 
+            resources.ApplyResources(this.Column5, "Column5");
+            this.Column5.Name = "Column5";
+            // 
+            // Column4
+            // 
+            resources.ApplyResources(this.Column4, "Column4");
+            this.Column4.Name = "Column4";
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.Column6, "Column6");
+            this.Column6.Name = "Column6";
+            // 
             // tabReport
             // 
             this.tabReport.BackColor = System.Drawing.SystemColors.Control;
@@ -870,37 +901,6 @@
             resources.ApplyResources(this.pictureBox8, "pictureBox8");
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.TabStop = false;
-            // 
-            // Column1
-            // 
-            resources.ApplyResources(this.Column1, "Column1");
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            resources.ApplyResources(this.Column2, "Column2");
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            resources.ApplyResources(this.Column3, "Column3");
-            this.Column3.Name = "Column3";
-            // 
-            // Column5
-            // 
-            resources.ApplyResources(this.Column5, "Column5");
-            this.Column5.Name = "Column5";
-            // 
-            // Column4
-            // 
-            resources.ApplyResources(this.Column4, "Column4");
-            this.Column4.Name = "Column4";
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(this.Column6, "Column6");
-            this.Column6.Name = "Column6";
             // 
             // frmMainForm
             // 

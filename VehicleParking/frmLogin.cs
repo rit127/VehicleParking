@@ -15,7 +15,7 @@ namespace VehicleParking
 {
     public partial class frmLogin : Form
     {
-        parkingEntities objdb;
+        parkingsEntities objdb;
         MySqlConnection mysqlCon;
 
         public frmLogin()
@@ -23,8 +23,8 @@ namespace VehicleParking
             InitializeComponent();
             
 
-            objdb = new parkingEntities(GlobalVaraiable.EntityConnectionMysql());
-            this.Hide();
+            objdb = new parkingsEntities(GlobalVaraiable.EntityConnectionMysql());
+            //this.Hide();
         }
         
         private void frmLogin_Load(object sender, EventArgs e)
@@ -82,7 +82,8 @@ namespace VehicleParking
             {
                 frmConfigurations cf = new frmConfigurations();
                 cf.Show();
-                this.Dispose();
+                this.Hide();
+                //this.Dispose();
                 //this.SendToBack();
                 //cf.BringToFront();
             }

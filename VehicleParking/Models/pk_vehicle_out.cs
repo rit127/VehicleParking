@@ -14,13 +14,11 @@ namespace VehicleParking.Models
     
     public partial class pk_vehicle_out
     {
-        public int id { get; set; }
-        public Nullable<int> user_id { get; set; }
-        public string ticketid { get; set; }
+        public long Id { get; set; }
+        public int user_id { get; set; }
+        public string ticket_id { get; set; }
         public string plate_number_out { get; set; }
-        public Nullable<System.DateTime> date_out { get; set; }
+        public System.DateTime date_out { get; set; }
         public string status { get; set; }
-    
-        public virtual pk_users pk_users { get; set; }
     }
 }

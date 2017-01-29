@@ -13,17 +13,17 @@ namespace VehicleParking.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class parkingEntities : DbContext
+    public partial class parkingsEntities : DbContext
     {
-    
-        public parkingEntities(string con)
-            
-            : base(con)
-            //: base(string.Format(@"metadata = res://*/Models.VechicleParking.csdl|res://*/Models.VechicleParking.ssdl|res://*/Models.VechicleParking.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;" + GlobalVaraiable.MysqlConnect() +"persistsecurityinfo=True&quot; providerName=System.Data.EntityClient"))
-            //: base(string.Format(@"metadata=res://*/Models.VechicleParking.csdl|res://*/Models.VechicleParking.ssdl|res://*/Models.VechicleParking.msl;provider=MySql.Data.MySqlClient;provider connection string=server='localhost;user id=root;password=Sothearith;persistsecurityinfo=True;database=parking providerName' = System.Data.EntityClient"))
+        public parkingsEntities()
+            : base("name=parkingsEntities")
         {
         }
-    
+
+        public parkingsEntities(string nameOrConnectionString) : base(nameOrConnectionString)
+        {
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

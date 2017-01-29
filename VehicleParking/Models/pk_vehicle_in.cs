@@ -14,10 +14,10 @@ namespace VehicleParking.Models
     
     public partial class pk_vehicle_in
     {
-        public int id { get; set; }
+        public long Id { get; set; }
         public string ticket_id { get; set; }
         public string plate_number_in { get; set; }
-        public Nullable<System.DateTime> date_in { get; set; }
+        public System.DateTime date_in { get; set; }
         public string status { get; set; }
     }
 }

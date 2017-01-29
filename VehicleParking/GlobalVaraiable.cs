@@ -30,7 +30,7 @@ namespace VehicleParking
 
             entityConnectionStringBuilder.ProviderConnectionString = MysqlConnect();
             //server=localhost;user id=root;password=Sothearith;persistsecurityinfo=True;database=parking
-            entityConnectionStringBuilder.Metadata = "res://*/Models.VechicleParking.csdl|res://*/Models.VechicleParking.ssdl|res://*/Models.VechicleParking.msl";
+            entityConnectionStringBuilder.Metadata = "res://*/Models.VehicleParking.csdl|res://*/Models.VehicleParking.ssdl|res://*/Models.VehicleParking.msl";
             return entityConnectionStringBuilder.ToString();
         }
 

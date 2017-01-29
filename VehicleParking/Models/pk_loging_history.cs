@@ -14,11 +14,9 @@ namespace VehicleParking.Models
     
     public partial class pk_loging_history
     {
-        public int id { get; set; }
-        public Nullable<int> user_id { get; set; }
-        public Nullable<System.DateTime> login_date { get; set; }
-        public Nullable<System.DateTime> logout__date { get; set; }
-    
-        public virtual pk_users pk_users { get; set; }
+        public long Id { get; set; }
+        public int user_id { get; set; }
+        public System.DateTime login_date { get; set; }
+        public System.DateTime logout_date { get; set; }
     }
 }

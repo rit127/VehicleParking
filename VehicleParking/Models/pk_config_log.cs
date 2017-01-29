@@ -14,12 +14,10 @@ namespace VehicleParking.Models
     
     public partial class pk_config_log
     {
-        public int id { get; set; }
-        public Nullable<int> config_id { get; set; }
+        public long Id { get; set; }
+        public int config_id { get; set; }
         public string key { get; set; }
         public string value { get; set; }
-        public Nullable<System.DateTime> update_date { get; set; }
-    
-        public virtual pk_config pk_config { get; set; }
+        public System.DateTime update_date { get; set; }
     }
 }

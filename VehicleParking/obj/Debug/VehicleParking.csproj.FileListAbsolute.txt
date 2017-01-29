@@ -42,13 +42,9 @@ C:\Users\chano\Desktop\VehicleParking\VehicleParking\bin\Debug\VehicleParking.pd
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\bin\Debug\km\VehicleParking.resources.dll
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\bin\Debug\EntityFramework.dll
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\bin\Debug\EntityFramework.xml
-C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmConfigurations.resources
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmLogin.resources
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmMainForm.resources
-C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmSetting.resources
-C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmUserController.resources
-C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmVehicleParking.resources
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.Properties.Resources.resources
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmMainForm.km.resources
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csproj.GenerateResource.Cache
@@ -73,7 +69,6 @@ C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.cs
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\km\VehicleParking.resources.dll
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmReport.resources
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache
-C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmReport.resources
 C:\VehicleParking\VehicleParking\bin\Debug\VehicleParking.exe.config
 C:\VehicleParking\VehicleParking\obj\Debug\VehicleParking.exe
 C:\VehicleParking\VehicleParking\obj\Debug\VehicleParking.pdb
@@ -95,3 +90,5 @@ C:\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmMainForm.km.resourc
 C:\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csproj.GenerateResource.Cache
 C:\VehicleParking\VehicleParking\obj\Debug\km\VehicleParking.resources.dll
 C:\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache
+C:\Users\chano\Desktop\VehicleParking\VehicleParking\bin\Debug\MySql.Data.dll
+C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache

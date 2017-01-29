@@ -76,63 +76,39 @@
     <Compile Include="frmMainForm.Designer.cs">
       <DependentUpon>frmMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReport.Designer.cs">
-      <DependentUpon>frmReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSetting.Designer.cs">
-      <DependentUpon>frmSetting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmUserController.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUserController.Designer.cs">
-      <DependentUpon>frmUserController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmVehicleParking.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmVehicleParking.Designer.cs">
-      <DependentUpon>frmVehicleParking.cs</DependentUpon>
-    </Compile>
     <Compile Include="GlobalVaraiable.cs" />
     <Compile Include="Models\pk_config.cs">
-      <DependentUpon>VechicleParking.tt</DependentUpon>
+      <DependentUpon>VehicleParking.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\pk_config_log.cs">
-      <DependentUpon>VechicleParking.tt</DependentUpon>
+      <DependentUpon>VehicleParking.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\pk_loging_history.cs">
-      <DependentUpon>VechicleParking.tt</DependentUpon>
+      <DependentUpon>VehicleParking.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\pk_users.cs">
-      <DependentUpon>VechicleParking.tt</DependentUpon>
+      <DependentUpon>VehicleParking.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\pk_vehicle_in.cs">
-      <DependentUpon>VechicleParking.tt</DependentUpon>
+      <DependentUpon>VehicleParking.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\pk_vehicle_out.cs">
-      <DependentUpon>VechicleParking.tt</DependentUpon>
+      <DependentUpon>VehicleParking.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VechicleParking.Context.cs">
+    <Compile Include="Models\VehicleParking.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VechicleParking.Context.tt</DependentUpon>
+      <DependentUpon>VehicleParking.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VechicleParking.cs">
+    <Compile Include="Models\VehicleParking.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VechicleParking.tt</DependentUpon>
+      <DependentUpon>VehicleParking.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VechicleParking.Designer.cs">
+    <Compile Include="Models\VehicleParking.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VechicleParking.edmx</DependentUpon>
+      <DependentUpon>VehicleParking.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -148,18 +124,6 @@
     <EmbeddedResource Include="frmMainForm.resx">
       <DependentUpon>frmMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReport.resx">
-      <DependentUpon>frmReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSetting.resx">
-      <DependentUpon>frmSetting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmUserController.resx">
-      <DependentUpon>frmUserController.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmVehicleParking.resx">
-      <DependentUpon>frmVehicleParking.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -170,12 +134,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="Models\VechicleParking.edmx">
+    <EntityDeploy Include="Models\VehicleParking.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>VechicleParking.Designer.cs</LastGenOutput>
+      <LastGenOutput>VehicleParking.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\VechicleParking.edmx.diagram">
-      <DependentUpon>VechicleParking.edmx</DependentUpon>
+    <None Include="Models\VehicleParking.edmx.diagram">
+      <DependentUpon>VehicleParking.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -192,16 +156,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\VechicleParking.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>VechicleParking.edmx</DependentUpon>
-      <LastGenOutput>VechicleParking.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\VechicleParking.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>VechicleParking.edmx</DependentUpon>
-      <LastGenOutput>VechicleParking.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\logo_parking.png" />
     <None Include="Resources\Settings-icon1.png" />
     <None Include="Resources\seo.png" />
@@ -227,6 +181,18 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\VehicleParking.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VehicleParking.edmx</DependentUpon>
+      <LastGenOutput>VehicleParking.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\VehicleParking.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VehicleParking.edmx</DependentUpon>
+      <LastGenOutput>VehicleParking.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

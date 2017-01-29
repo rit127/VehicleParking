@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="parkingsModelStoreContainer" CdmEntityContainer="parkingsEntities">
+    <EntitySetMapping Name="pk_config">
+      <EntityTypeMapping TypeName="parkingsModel.pk_config">
+        <MappingFragment StoreEntitySet="pk_config">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pk_config_log">
+      <EntityTypeMapping TypeName="parkingsModel.pk_config_log">
+        <MappingFragment StoreEntitySet="pk_config_log">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="config_id" ColumnName="config_id" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pk_loging_history">
+      <EntityTypeMapping TypeName="parkingsModel.pk_loging_history">
+        <MappingFragment StoreEntitySet="pk_loging_history">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="login_date" ColumnName="login_date" />
+          <ScalarProperty Name="logout_date" ColumnName="logout_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pk_users">
+      <EntityTypeMapping TypeName="parkingsModel.pk_users">
+        <MappingFragment StoreEntitySet="pk_users">
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="activate" ColumnName="activate" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="date_register" ColumnName="date_register" />
+          <ScalarProperty Name="last_login" ColumnName="last_login" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pk_vehicle_in">
+      <EntityTypeMapping TypeName="parkingsModel.pk_vehicle_in">
+        <MappingFragment StoreEntitySet="pk_vehicle_in">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ticket_id" ColumnName="ticket_id" />
+          <ScalarProperty Name="plate_number_in" ColumnName="plate_number_in" />
+          <ScalarProperty Name="date_in" ColumnName="date_in" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pk_vehicle_out">
+      <EntityTypeMapping TypeName="parkingsModel.pk_vehicle_out">
+        <MappingFragment StoreEntitySet="pk_vehicle_out">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="ticket_id" ColumnName="ticket_id" />
+          <ScalarProperty Name="plate_number_out" ColumnName="plate_number_out" />
+          <ScalarProperty Name="date_out" ColumnName="date_out" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

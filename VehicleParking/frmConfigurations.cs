@@ -57,13 +57,13 @@ namespace VehicleParking
                 {
                     mysqlCon.ConnectionString = "server=" + txtHostName.Text + ";uid=" + txtUserName.Text + ";pwd=" + txtPassword.Text + ";database=" + txtDatabaseName.Text + ";";
                     mysqlCon.Open();
-                    MessageBox.Show("Connectio Successful");
+                    MessageBox.Show("Connection Successful");
                 }
                 else if (cbConnectionString.Checked)
                 {
                     mysqlCon.ConnectionString = txtConnectionString.Text;
                     mysqlCon.Open();
-                    MessageBox.Show("Connectio Successful");
+                    MessageBox.Show("Connection Successful");
                 }
             }
             catch (MySqlException ex)
@@ -87,6 +87,9 @@ namespace VehicleParking
                     fs.Close();
                     MessageBox.Show("Save Successfully ^_^");
                     this.Close();
+
+
+
                     frmLogin login = new frmLogin();
                     login.Show();
                 }

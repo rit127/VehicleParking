@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="parkingsModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="pk_config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="key" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_date" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_config_log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="config_id" Type="int" Nullable="false" />
+          <Property Name="key" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="update_date" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_loging_history">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="login_date" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="logout_date" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="activate" Type="bool" Nullable="false" />
+          <Property Name="active" Type="bool" Nullable="false" />
+          <Property Name="avatar" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="date_register" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="last_login" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_vehicle_in">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ticket_id" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="plate_number_in" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="date_in" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_vehicle_out">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="ticket_id" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="plate_number_out" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="date_out" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="parkingsModelStoreContainer">
+          <EntitySet Name="pk_config" EntityType="Self.pk_config" Schema="parkings" store:Type="Tables" />
+          <EntitySet Name="pk_config_log" EntityType="Self.pk_config_log" Schema="parkings" store:Type="Tables" />
+          <EntitySet Name="pk_loging_history" EntityType="Self.pk_loging_history" Schema="parkings" store:Type="Tables" />
+          <EntitySet Name="pk_users" EntityType="Self.pk_users" Schema="parkings" store:Type="Tables" />
+          <EntitySet Name="pk_vehicle_in" EntityType="Self.pk_vehicle_in" Schema="parkings" store:Type="Tables" />
+          <EntitySet Name="pk_vehicle_out" EntityType="Self.pk_vehicle_out" Schema="parkings" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="parkingsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="pk_config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="key" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_config_log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="config_id" Type="Int32" Nullable="false" />
+          <Property Name="key" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_loging_history">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="login_date" Type="DateTime" Nullable="false" />
+          <Property Name="logout_date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="activate" Type="Boolean" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="date_register" Type="DateTime" Nullable="false" />
+          <Property Name="last_login" Type="DateTime" Nullable="false" />
+          <Property Name="role" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pk_vehicle_in">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticket_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plate_number_in" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date_in" Type="DateTime" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pk_vehicle_out">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="ticket_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plate_number_out" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date_out" Type="DateTime" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="parkingsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="pk_config" EntityType="Self.pk_config" />
+          <EntitySet Name="pk_config_log" EntityType="Self.pk_config_log" />
+          <EntitySet Name="pk_loging_history" EntityType="Self.pk_loging_history" />
+          <EntitySet Name="pk_users" EntityType="Self.pk_users" />
+          <EntitySet Name="pk_vehicle_in" EntityType="Self.pk_vehicle_in" />
+          <EntitySet Name="pk_vehicle_out" EntityType="Self.pk_vehicle_out" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="parkingsModelStoreContainer" CdmEntityContainer="parkingsEntities">
+          <EntitySetMapping Name="pk_config">
+            <EntityTypeMapping TypeName="parkingsModel.pk_config">
+              <MappingFragment StoreEntitySet="pk_config">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="key" ColumnName="key" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pk_config_log">
+            <EntityTypeMapping TypeName="parkingsModel.pk_config_log">
+              <MappingFragment StoreEntitySet="pk_config_log">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="config_id" ColumnName="config_id" />
+                <ScalarProperty Name="key" ColumnName="key" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pk_loging_history">
+            <EntityTypeMapping TypeName="parkingsModel.pk_loging_history">
+              <MappingFragment StoreEntitySet="pk_loging_history">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="login_date" ColumnName="login_date" />
+                <ScalarProperty Name="logout_date" ColumnName="logout_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pk_users">
+            <EntityTypeMapping TypeName="parkingsModel.pk_users">
+              <MappingFragment StoreEntitySet="pk_users">
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="activate" ColumnName="activate" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="date_register" ColumnName="date_register" />
+                <ScalarProperty Name="last_login" ColumnName="last_login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pk_vehicle_in">
+            <EntityTypeMapping TypeName="parkingsModel.pk_vehicle_in">
+              <MappingFragment StoreEntitySet="pk_vehicle_in">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ticket_id" ColumnName="ticket_id" />
+                <ScalarProperty Name="plate_number_in" ColumnName="plate_number_in" />
+                <ScalarProperty Name="date_in" ColumnName="date_in" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pk_vehicle_out">
+            <EntityTypeMapping TypeName="parkingsModel.pk_vehicle_out">
+              <MappingFragment StoreEntitySet="pk_vehicle_out">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="ticket_id" ColumnName="ticket_id" />
+                <ScalarProperty Name="plate_number_out" ColumnName="plate_number_out" />
+                <ScalarProperty Name="date_out" ColumnName="date_out" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
