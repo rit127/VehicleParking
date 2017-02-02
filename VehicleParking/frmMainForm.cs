@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VehicleParking.AppSocket;
 using VehicleParking.Models;
 
 namespace VehicleParking
@@ -15,11 +18,94 @@ namespace VehicleParking
     public partial class frmMainForm : Form
     {
         parkingsEntities objdb;
+        private readonly Listener listener;
+
+        public List<Socket> clients = new List<Socket>(); // store all the clients into a list
+
+        public void BroadcastData(string data) // send to all clients
+        {
+            foreach (var socket in clients)
+            {
+                try { socket.Send(Encoding.ASCII.GetBytes(data)); }
+                catch (Exception) { }
+            }
+        }
+
+        private void listener_SocketAccepted(Socket e)
+        {
+            var client = new Client(e);
+            client.Received += client_Received;
+            client.Disconnected += client_Disconnected;
+       
+            this.Invoke(new Action(() => {
+                string ip = client.Ip.ToString().Split(':')[0];
+
+                //item.Tag = client;
+                //clientList.Items.Add(item);
+                clients.Add(e);
+                Console.WriteLine("listener_SocketAccepted");
+            }));
+        }
+
+        private void client_Disconnected(Client sender)
+        {
+
+            this.Invoke(new Action(() => {
+                Console.WriteLine("client_Disconnected");
+            }));
+            /*this.Invoke(() =>
+            {
+                for (int i = 0; i < clientList.Items.Count; i++)
+                {
+                    var client = clientList.Items[i].Tag as Client;
+                    if (client.Ip == sender.Ip)
+                    {
+                       /* txtReceive.Text += "<< " + clientList.Items[i].SubItems[1].Text + " has left the room >>\r\n";
+                        BroadcastData(HCTextCmd.RefreshChat + "|" + txtReceive.Text);
+                        clientList.Items.RemoveAt(i);
+                    }
+                }
+            });*/
+        }
+
+       
+
+        private void client_Received(Client sender, byte[] data)
+        {
+         
+            this.Invoke(new Action(() =>
+            {
+                var command = Encoding.ASCII.GetString(data);
+               
+                //Console.WriteLine(client.Ip);
+                Console.WriteLine(command+ "-" + sender.Ip);
+
+                //label13.Text = "client_Received";
+                /*
+                for (int i = 0; i < clientList.Items.Count; i++)
+                {
+                    var client = clientList.Items[i].Tag as Client;
+                    if (client == null || client.Ip != sender.Ip) continue;
+
+                    var command = Encoding.ASCII.GetString(data);
+                    Console.WriteLine(client.Ip);
+                    Console.WriteLine(command);
+                    //var cmd = command[0];
+                    //BroadcastData(HCTextCmd.Users + "|" + users.TrimEnd('|'));
+                    //BroadcastData(HCTextCmd.RefreshChat + "|" + txtReceive.Text);
+                    
+                }*/
+            }));
+        }
+
+
         public frmMainForm()
         {
             InitializeComponent();
 
             objdb = new parkingsEntities(GlobalVaraiable.EntityConnectionMysql());
+            listener = new Listener(1000);
+            listener.SocketAccepted += listener_SocketAccepted;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -91,27 +177,53 @@ namespace VehicleParking
             txtUsername.Enabled = tf;
             txtPassword.Enabled = tf;
             txtConfirmPass.Enabled = tf;
+            txtTel.Enabled = tf;
             comboRole.Enabled = tf;
         }
 
-        void setButtomUserEnable(bool tf)
+        void setTextBoxUserToNull()
         {
-            btnEditUser.Enabled = tf;
-            btnDeleteUser.Enabled = tf;
-            btnResetUser.Enabled = tf;
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtConfirmPass.Text = "";
+            txtTel.Text = "";
+        }
+
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            dateToolStripMenuItem.Text = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
         }
         private void frmMainForm_Load(object sender, EventArgs e)
         {
-            this.dateToolStripMenuItem.Text = DateTime.Now.ToString();
+
+            //listener.Start();
+
+
+            this.asToolStripMenuItem.Text = GlobalVaraiable.Username;
+            comboRole.SelectedIndex = 1;
+            //Set Time Clock
+            Timer tmr = new Timer();
+            tmr.Interval = 1000;
+            tmr.Tick += new EventHandler(tmr_Tick);
+            tmr.Start();
 
             //Tab User
             List<pk_users> user = objdb.pk_users.ToList();
             foreach(var item in user)
             {
-                dataGridUser.Rows.Add(item.username, item.activate, item.date_register, item.phone, item.role, item.last_login);
+                dataGridUser.Rows.Add(item.username, item.role, item.phone, item.last_login , item.activate , "Reset");
             }
-            setGroupBoxEnable(false);
-            setButtomUserEnable(false);
+            dataGridUser.ClearSelection();
+
+            //Tab Price
+            var price = objdb.pk_config_log.ToList();
+            foreach (var item in price)
+            {
+                dataGridVehiclePrice.Rows.Add(item.Id, item.key, item.value, item.update_date);
+            }
+            dataGridVehiclePrice.Sort(this.Id, ListSortDirection.Descending);
+
+      
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,86 +265,335 @@ namespace VehicleParking
         //User Menu
         private void btnNewUser_Click(object sender, EventArgs e)
         {
-            if(btnNewUser.Text.Equals("New"))
-            {
-                btnNewUser.Text = "Create";
-                setGroupBoxEnable(true);
-                txtUsername.Focus();
-                btnEditUser.Enabled = true;
-                btnEditUser.Text = "Cancel";
-                
-            }
-            else if(btnNewUser.Text.Equals("Create"))
+            if(btnNewUser.Text.Equals("Save"))
             {
                 try
                 {
                     pk_users user = new pk_users();
-
-                    if (txtPassword.Text == txtConfirmPass.Text)
+                    if (txtUsername.Text.Trim().Equals("") || txtUsername.Text.Trim().Count() < 5)
                     {
-                        
-                        user.username = txtUsername.Text;
-                        user.password = txtPassword.Text;
-                        user.role = comboRole.Text;
-                        user.activate = true;
-                        user.active = false;                        
-                        
-                        user.date_register = DateTime.Now;
-                        user.last_login = DateTime.Now;
-                        
-                        objdb.pk_users.Add(user);
-                        objdb.SaveChanges();                        
-                        MessageBox.Show("Create User Successfully!!!");
-                        //LoadToGrid();
-
+                        MessageBox.Show("Please Input Username and Username is more that 5 character");
+                        txtUsername.Focus();
                     }
-                }
-                catch(MySqlException mysqlEx)
-                {
+                    else if(txtPassword.Text.Trim().Equals("") /*|| txtPassword.Text.Trim().Count() < 5*/)
+                    {
+                        MessageBox.Show("Please Input Password");
+                        txtPassword.Focus();
+                    }
+                    else if(txtConfirmPass.Text.Trim().Equals(""))
+                    {
+                        MessageBox.Show("Please Input Comfrim Password");
+                        txtConfirmPass.Focus();
+                    }
+                    else
+                    {
+                        if(!txtConfirmPass.Text.Equals(txtPassword.Text))
+                        {
+                            MessageBox.Show("Your Confirm Password not match");
+                            txtConfirmPass.Focus();
+                        }
+                        else
+                        {
+                            user.username = txtUsername.Text;
+                            user.password = txtPassword.Text;
+                            user.role = comboRole.Text;
+                            user.activate = true;
+                            user.active = false;
 
-                }
-                btnNewUser.Text = "New";
+                            user.date_register = DateTime.Now;
+                            user.last_login = DateTime.Now;
 
-            }
-        }
-
-        private void btnEditUser_Click(object sender, EventArgs e)
-        {
-            if(btnEditUser.Text.Equals("Cancel"))
-            {
-                btnNewUser.Text = "New";
-                btnEditUser.Text = "Edit";
-                btnEditUser.Enabled = false;
-                btnEditUser.Text = "Update";
-                setGroupBoxEnable(false);
-                
-            }
-            else if (btnEditUser.Text.Equals("Update"))
-            {
-                try
-                {
-                    pk_users user = new pk_users();
-                    objdb.pk_users.First(i => i.Id == user.Id);
-
-                    user.username = txtUsername.Text;
-                    user.password = txtPassword.Text;
-                    user.password = txtConfirmPass.Text;
-                    user.role = comboRole.Text;
-
-                    objdb.SaveChanges();
-                    MessageBox.Show("Update Successfully!!!");
+                            objdb.pk_users.Add(user);
+                            objdb.SaveChanges();
+                            dataGridUser.Rows.Add(user.username, user.role, user.phone,  user.last_login , user.activate);
+                            MessageBox.Show("Create User Successfully!!!");
+                            setTextBoxUserToNull();
+                        }
+                    }                                       
                 }
                 catch (MySqlException mysqlEx)
                 {
 
                 }
-                btnEditUser.Text = "Edit";
             }
-        }
+            else
+            {
+                try
+                {
+                    if (txtPassword.Text == txtConfirmPass.Text)
+                    {
+                        int i = dataGridUser.SelectedRows[0].Index;
+                        DataGridViewRow dgv = dataGridUser.Rows[i];
+                        string dgvusername = dgv.Cells[0].Value.ToString();
+                        var user = objdb.pk_users.First(z => z.username == dgvusername);
+                        if (txtPassword.Text == txtConfirmPass.Text)
+                        {
+                            //Update Row Selected to Database
+                            user.username = txtUsername.Text;
+                            user.password = txtPassword.Text;
+                            user.phone = txtTel.Text;
+                            user.role = comboRole.Text;
+                            user.activate = true;
+                            objdb.SaveChanges();
+
+                            //Update to DataGrid
+                            dataGridUser.Rows[i].SetValues(user.username, user.role, user.phone, user.last_login, user.activate);
+
+                            //Set Enable DataGrid
+                            dataGridUser.Enabled = true;
+                            //Set Group Box Value to Null
+                            setTextBoxUserToNull();
+                            btnNewUser.Text = "Save";
+                            MessageBox.Show("Update Complete");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Your password is not match !! ");
+                    }
+                }
+                catch (MySqlException mysqlEx)
+                {
+
+                }
+            }
+            //    if (btnNewUser.Text.Equals("New"))
+            //    {
+            //        btnNewUser.Text = "Create";
+            //        setTextBoxUserToNull();
+            //        setGroupBoxEnable(true);
+            //        txtUsername.Focus();
+            //        btnEditUser.Enabled = true;
+            //        btnDeleteUser.Enabled = false;
+            //        btnResetUser.Enabled = false;
+            //        btnEditUser.Text = "Cancel";
+
+                //    }
+                //    else if (btnNewUser.Text.Equals("Create"))
+                //    {
+                //        try
+                //        {
+                //            pk_users user = new pk_users();
+
+                //            if (txtPassword.Text == txtConfirmPass.Text)
+                //            {
+                //                user.username = txtUsername.Text;
+                //                user.password = txtPassword.Text;
+                //                user.role = comboRole.Text;
+                //                user.activate = true;
+                //                user.active = false;
+
+                //                user.date_register = DateTime.Now;
+                //                user.last_login = DateTime.Now;
+
+                //                objdb.pk_users.Add(user);
+                //                objdb.SaveChanges();
+                //                dataGridUser.Rows.Add(user.username, user.activate, user.date_register, user.phone, user.role, user.last_login);
+
+                //                btnEditUser.Text = "Edit";
+                //                btnEditUser.Enabled = false;
+                //                MessageBox.Show("Create User Successfully!!!");
+                //                setTextBoxUserToNull();
+                //                setGroupBoxEnable(false);
+                //                btnNewUser.Text = "New";
+                //                //LoadToGrid();
+
+                //            }
+                //            else if (txtPassword.Text != txtConfirmPass.Text)
+                //            {
+                //                MessageBox.Show("Your Comfirm Password Not Match");
+                //                txtConfirmPass.Focus();
+                //            }
+                //            else if (txtUsername.Text == null && txtPassword.Text == null && txtConfirmPass.Text == null && comboRole.Text == null)
+                //            {
+                //                MessageBox.Show("Please Fill the empty Field");
+                //            }
+                //        }
+                //        catch (MySqlException mysqlEx)
+                //        {
+
+                //        }
+
+                //    }
+                //    else if (btnNewUser.Text == "Cancel")
+                //    {
+                //        btnNewUser.Text = "New";
+                //        btnEditUser.Text = "Edit";
+                //        setButtomUserEnable(false);
+                //        setTextBoxUserToNull();
+                //        setGroupBoxEnable(false);
+                //        dataGridUser.Enabled = true;
+                //    }
+                //    else if (btnNewUser.Text == "Clear")
+                //    {
+                //        btnNewUser.Text = "New";
+                //        setTextBoxUserToNull();
+                //        setButtomUserEnable(false);
+                //    }
+                //
+            }
 
         private void LoadToGrid()
         {
 
-        }        
+        }
+
+        private void eXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void dataGridUser_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnNewUser.Text = "Update";
+            int i = dataGridUser.SelectedRows[0].Index;
+            DataGridViewRow dgv = dataGridUser.Rows[i];
+            string dgvusername = dgv.Cells[0].Value.ToString();
+            var user = objdb.pk_users.First(z => z.username == dgvusername);
+
+            try
+            {
+                //Get Data From DataGrid to TextBox for Edit
+                txtUsername.Text = dgv.Cells[0].Value.ToString();
+                txtPassword.Text = user.password;
+                txtConfirmPass.Text = user.password;
+                              
+                comboRole.Text = dgv.Cells[1].Value.ToString();
+                txtTel.Text = dgv.Cells[2].Value.ToString();
+               
+            }catch(Exception ex)
+            {
+                txtTel.Text = "";
+            }
+
+
+        }
+
+        private void dataGridUser_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void txtSearchUser_KeyUp(object sender, KeyEventArgs e)
+        {
+            string search = txtSearchUser.Text;
+            if(search =="")
+            {
+                dataGridUser.Rows[0].Cells[0].Selected = true;
+            }
+            for (int i = 0; i < (dataGridUser.Rows.Count); i++)
+            {
+                if (dataGridUser.Rows[i].Cells["Column1"].Value.ToString().StartsWith(search, true, CultureInfo.InvariantCulture))
+                {
+                    dataGridUser.Rows[i].Cells[0].Selected = true;
+                    return; // stop looping
+                }
+                else
+                {
+                    dataGridUser.ClearSelection();
+                }
+            }
+        }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            dataGridReport.Rows.Clear();
+            string FromDate = dtpFromDate.Value.ToShortDateString();
+            string ToDate = dtpToDate.Value.ToShortDateString();
+
+            List<pk_vehicle_out> report = objdb.pk_vehicle_out.ToList();
+
+            foreach(var item in report)
+            {
+                string db_date_out = item.date_out.ToShortDateString();
+                if(Convert.ToDateTime(db_date_out) >= Convert.ToDateTime(FromDate)  && Convert.ToDateTime(db_date_out) <= Convert.ToDateTime(ToDate))
+                {
+                    dataGridReport.Rows.Add(item.ticket_id , item.date_out.ToShortDateString() , item.date_out.ToShortTimeString());
+                }                
+            }
+
+
+            labTotal_Out.Text = dataGridReport.RowCount.ToString();
+            labTotal_Income.Text = (dataGridReport.RowCount * 500).ToString();
+        }
+
+        private void dataGridUser_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            setTextBoxUserToNull();
+            btnNewUser.Text = "Save";
+            int i = dataGridUser.SelectedRows[0].Index;
+            DataGridViewRow dgv = dataGridUser.Rows[i];
+            string dgvusername = dgv.Cells[0].Value.ToString();
+            var user = objdb.pk_users.First(z => z.username == dgvusername);
+
+            if (e.ColumnIndex == dataGridUser.Columns["Reset"].Index && e.RowIndex >= 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure to reset this user??", "Warming", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    user.password = "12345678";
+                    objdb.SaveChanges();
+                    MessageBox.Show("Default Password of User : " + dgvusername + " is 12345678.");
+                    setTextBoxUserToNull();
+                    dataGridUser.ClearSelection();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+            else if(e.ColumnIndex == dataGridUser.Columns["Activate"].Index && e.RowIndex >= 0)
+            {
+                bool getCheck = Convert.ToBoolean(dgv.Cells[4].Value);
+                if(getCheck)
+                {
+                    user.activate = false;
+                    objdb.SaveChanges();
+
+                    dgv.Cells[4].Value = !getCheck;
+                }
+                else
+                {
+                    user.activate = true;
+                    objdb.SaveChanges();
+
+                    dgv.Cells[4].Value = !getCheck;
+                }
+            }
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmLogin login = new frmLogin();
+            login.Show();
+            Program.MysqlCon.Close();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void btnUpdatePrice_Click(object sender, EventArgs e)
+        {
+            pk_config_log price = new pk_config_log();
+            pk_config configPrice = objdb.pk_config.First(item => item.Id == 1);
+            price.config_id = 1;
+            price.key = "vehicle_price";
+            price.value = txtVehiclePrice.Text;
+            price.update_date = DateTime.Now;
+            objdb.pk_config_log.Add(price);
+
+            configPrice.value = price.value;
+            objdb.SaveChanges();
+            
+            dataGridVehiclePrice.Rows.Insert(0 , price.Id, price.key , price.value , price.update_date);
+            dataGridVehiclePrice.ClearSelection();
+            dataGridVehiclePrice.Rows[0].Selected = true;
+            
+
+
+        }
     }
 }

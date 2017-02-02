@@ -60,14 +60,10 @@ C:\Users\hengs\Desktop\VehicleParking\VehicleParking\bin\Debug\EntityFramework.x
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmConfigurations.resources
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmLogin.resources
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmMainForm.resources
-C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmSetting.resources
-C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmUserController.resources
-C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmVehicleParking.resources
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.Properties.Resources.resources
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmMainForm.km.resources
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csproj.GenerateResource.Cache
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\km\VehicleParking.resources.dll
-C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.frmReport.resources
 C:\Users\hengs\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache
 C:\VehicleParking\VehicleParking\bin\Debug\VehicleParking.exe.config
 C:\VehicleParking\VehicleParking\obj\Debug\VehicleParking.exe
@@ -92,3 +88,4 @@ C:\VehicleParking\VehicleParking\obj\Debug\km\VehicleParking.resources.dll
 C:\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\bin\Debug\MySql.Data.dll
 C:\Users\chano\Desktop\VehicleParking\VehicleParking\obj\Debug\VehicleParking.csprojResolveAssemblyReference.cache
+C:\Users\hengs\Desktop\VehicleParking\VehicleParking\bin\Debug\MySql.Data.dll

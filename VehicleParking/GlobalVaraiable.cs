@@ -11,7 +11,7 @@ namespace VehicleParking
     public class GlobalVaraiable
     {
         public static bool dis;
-
+        public static string Username;
         public static string MysqlConnect()
         {
             string path = "MysqlConnection.txt";
@@ -28,8 +28,9 @@ namespace VehicleParking
             var entityConnectionStringBuilder = new System.Data.EntityClient.EntityConnectionStringBuilder();
             entityConnectionStringBuilder.Provider = "MySql.Data.MySqlClient";
 
-            entityConnectionStringBuilder.ProviderConnectionString = MysqlConnect();
             //server=localhost;user id=root;password=Sothearith;persistsecurityinfo=True;database=parking
+            entityConnectionStringBuilder.ProviderConnectionString = MysqlConnect();
+            
             entityConnectionStringBuilder.Metadata = "res://*/Models.VehicleParking.csdl|res://*/Models.VehicleParking.ssdl|res://*/Models.VehicleParking.msl";
             return entityConnectionStringBuilder.ToString();
         }

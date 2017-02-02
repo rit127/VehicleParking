@@ -1,4 +1,4 @@
-server=localhost;uid=root;pwd=admin123;database=parkings;
+server=localhost;uid=root;pwd=Sothearith;database=parkings;
 
 
 

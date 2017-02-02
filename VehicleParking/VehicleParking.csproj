@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSocket\Client.cs" />
+    <Compile Include="AppSocket\Listener.cs" />
     <Compile Include="frmConfigurations.cs">
       <SubType>Form</SubType>
     </Compile>
