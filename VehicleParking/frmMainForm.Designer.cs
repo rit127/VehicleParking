@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehicleParkingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userControllerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,13 +42,15 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabVehicle = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picLiveCamOut = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LabTime = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LabDateTimeOut = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,8 +58,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnOpenBarrier = new System.Windows.Forms.Button();
+            this.picPhotoIN = new System.Windows.Forms.PictureBox();
+            this.btnRefreshCam = new System.Windows.Forms.Button();
             this.btnValidate = new System.Windows.Forms.Button();
             this.tabUser = new System.Windows.Forms.TabPage();
             this.txtSearchUser = new System.Windows.Forms.TextBox();
@@ -133,13 +132,13 @@
             this.tabControl1.SuspendLayout();
             this.tabVehicle.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLiveCamOut)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhotoIN)).BeginInit();
             this.tabUser.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUser)).BeginInit();
@@ -160,7 +159,6 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
             this.vehicleParkingToolStripMenuItem,
             this.userControllerToolStripMenuItem,
             this.reportToolStripMenuItem,
@@ -168,27 +166,6 @@
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePasswordToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
-            this.fileToolStripMenuItem.Image = global::VehicleParking.Properties.Resources.documenten;
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
-            // changePasswordToolStripMenuItem
-            // 
-            resources.ApplyResources(this.changePasswordToolStripMenuItem, "changePasswordToolStripMenuItem");
-            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            // 
-            // exitToolStripMenuItem
-            // 
-            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // vehicleParkingToolStripMenuItem
             // 
@@ -252,6 +229,7 @@
             // 
             this.changePasswordToolStripMenuItem2.Name = "changePasswordToolStripMenuItem2";
             resources.ApplyResources(this.changePasswordToolStripMenuItem2, "changePasswordToolStripMenuItem2");
+            this.changePasswordToolStripMenuItem2.Click += new System.EventHandler(this.changePasswordToolStripMenuItem2_Click);
             // 
             // tabControl1
             // 
@@ -269,34 +247,36 @@
             this.tabVehicle.Controls.Add(this.groupBox2);
             this.tabVehicle.Controls.Add(this.panel1);
             this.tabVehicle.Controls.Add(this.groupBox1);
-            this.tabVehicle.Controls.Add(this.btnOpenBarrier);
+            this.tabVehicle.Controls.Add(this.btnRefreshCam);
             this.tabVehicle.Controls.Add(this.btnValidate);
             resources.ApplyResources(this.tabVehicle, "tabVehicle");
             this.tabVehicle.Name = "tabVehicle";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.pictureBox2);
+            this.groupBox2.Controls.Add(this.picLiveCamOut);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
-            // pictureBox2
+            // picLiveCamOut
             // 
-            this.pictureBox2.Image = global::VehicleParking.Properties.Resources.Fotobatch_100250_gr;
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.TabStop = false;
+            this.picLiveCamOut.Image = global::VehicleParking.Properties.Resources.Fotobatch_100250_gr;
+            resources.ApplyResources(this.picLiveCamOut, "picLiveCamOut");
+            this.picLiveCamOut.Name = "picLiveCamOut";
+            this.picLiveCamOut.TabStop = false;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PowderBlue;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.LabTime);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.LabDateTimeOut);
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.label3);
@@ -305,6 +285,22 @@
             this.panel1.Controls.Add(this.label1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // LabTime
+            // 
+            resources.ApplyResources(this.LabTime, "LabTime");
+            this.LabTime.Name = "LabTime";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // pictureBox5
             // 
@@ -323,15 +319,10 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // label6
+            // LabDateTimeOut
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.LabDateTimeOut, "LabDateTimeOut");
+            this.LabDateTimeOut.Name = "LabDateTimeOut";
             // 
             // pictureBox4
             // 
@@ -369,23 +360,24 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.picPhotoIN);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // pictureBox1
+            // picPhotoIN
             // 
-            this.pictureBox1.Image = global::VehicleParking.Properties.Resources.Fotobatch_100250_gr;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
+            this.picPhotoIN.Image = global::VehicleParking.Properties.Resources.Fotobatch_100250_gr;
+            resources.ApplyResources(this.picPhotoIN, "picPhotoIN");
+            this.picPhotoIN.Name = "picPhotoIN";
+            this.picPhotoIN.TabStop = false;
             // 
-            // btnOpenBarrier
+            // btnRefreshCam
             // 
-            resources.ApplyResources(this.btnOpenBarrier, "btnOpenBarrier");
-            this.btnOpenBarrier.Name = "btnOpenBarrier";
-            this.btnOpenBarrier.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnRefreshCam, "btnRefreshCam");
+            this.btnRefreshCam.Name = "btnRefreshCam";
+            this.btnRefreshCam.UseVisualStyleBackColor = true;
+            this.btnRefreshCam.Click += new System.EventHandler(this.btnRefreshCam_Click);
             // 
             // btnValidate
             // 
@@ -891,14 +883,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabVehicle.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLiveCamOut)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhotoIN)).EndInit();
             this.tabUser.ResumeLayout(false);
             this.tabUser.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -924,9 +916,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem userControllerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
@@ -934,7 +923,6 @@
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem dateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vehicleParkingToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabVehicle;
@@ -942,13 +930,12 @@
         private System.Windows.Forms.TabPage tabReport;
         private System.Windows.Forms.TabPage tabSetting;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picLiveCamOut;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LabDateTimeOut;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label3;
@@ -956,8 +943,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnOpenBarrier;
+        private System.Windows.Forms.PictureBox picPhotoIN;
+        private System.Windows.Forms.Button btnRefreshCam;
         private System.Windows.Forms.Button btnValidate;
         private System.Windows.Forms.TextBox txtSearchUser;
         private System.Windows.Forms.Button btnNewUser;
@@ -1025,5 +1012,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label LabTime;
+        private System.Windows.Forms.Label label5;
     }
 }

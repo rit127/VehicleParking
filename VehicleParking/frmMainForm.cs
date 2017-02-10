@@ -1,13 +1,18 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Emgu.CV;
+using Emgu.CV.Structure;
+using Emgu.CV.UI;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleParking.AppSocket;
@@ -193,6 +198,46 @@ namespace VehicleParking
         {
             dateToolStripMenuItem.Text = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
         }
+
+        private void getCamera()
+        {
+            try
+            {
+                ImageViewer viewer = new ImageViewer();
+                Capture capture = new Capture("rtsp://admin:123456@172.16.101.224:554/live/ch1"); //create a camera captue
+                Application.Idle += new EventHandler(delegate (object senders, EventArgs ee)
+                {  //run this until application closed (close button click on image viewer)
+                    try
+                    {
+                        
+                        var c = capture.QuerySmallFrame();
+                        if (c == null)
+                        {
+                            return;
+                           // capture.Stop();
+                           // capture.Start();
+                        }
+                        else
+                        {
+                            viewer.Image = c;//draw the image obtained from camera               
+                            picLiveCamOut.Image = viewer.Image.Bitmap;
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //Thread.Sleep(5000);
+                        viewer.Image = capture.QueryFrame();//draw the image obtained from camera               
+                        picLiveCamOut.Image = viewer.Image.Bitmap;
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void frmMainForm_Load(object sender, EventArgs e)
         {
 
@@ -202,7 +247,7 @@ namespace VehicleParking
             this.asToolStripMenuItem.Text = GlobalVaraiable.Username;
             comboRole.SelectedIndex = 1;
             //Set Time Clock
-            Timer tmr = new Timer();
+            System.Windows.Forms.Timer tmr = new System.Windows.Forms.Timer();
             tmr.Interval = 1000;
             tmr.Tick += new EventHandler(tmr_Tick);
             tmr.Start();
@@ -223,7 +268,12 @@ namespace VehicleParking
             }
             dataGridVehiclePrice.Sort(this.Id, ListSortDirection.Descending);
 
-      
+
+            //Live Cam
+            getCamera();
+            
+
+
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -594,6 +644,26 @@ namespace VehicleParking
             
 
 
+        }
+
+        private void changePasswordToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmChangePassword fcp = new frmChangePassword();
+            fcp.Show();
+            fcp.BringToFront();
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            string searchForTickeetNumber = textBox1.Text;
+            var Record = objdb.pk_vehicle_out.First(item => item.ticket_id == searchForTickeetNumber);
+
+            LabDateTimeOut.Text = Record.date_out.ToShortDateString();
+        }
+
+        private void btnRefreshCam_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
