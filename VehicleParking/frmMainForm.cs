@@ -209,10 +209,11 @@ namespace VehicleParking
                 {  //run this until application closed (close button click on image viewer)
                     try
                     {
-                        
-                        var c = capture.QuerySmallFrame();
+                        var c = capture.QuerySmallFrame();                        
                         if (c == null)
                         {
+                            //viewer.Refresh();
+                            //picLiveCamOut.Image = viewer.Image.Bitmap;
                             return;
                            // capture.Stop();
                            // capture.Start();
@@ -243,7 +244,6 @@ namespace VehicleParking
 
             //listener.Start();
 
-
             this.asToolStripMenuItem.Text = GlobalVaraiable.Username;
             comboRole.SelectedIndex = 1;
             //Set Time Clock
@@ -252,25 +252,38 @@ namespace VehicleParking
             tmr.Tick += new EventHandler(tmr_Tick);
             tmr.Start();
 
-            //Tab User
-            List<pk_users> user = objdb.pk_users.ToList();
-            foreach(var item in user)
+            //Valid User Role
+            if (GlobalVaraiable.userRole.Equals("User"))
             {
-                dataGridUser.Rows.Add(item.username, item.role, item.phone, item.last_login , item.activate , "Reset");
+                this.userControllerToolStripMenuItem.Visible = false;
+                this.reportToolStripMenuItem.Visible = false;
+                this.settingToolStripMenuItem.Visible = false;
+                this.tabUser.Dispose();
+                this.tabSetting.Dispose();
+                this.tabReport.Dispose();
             }
-            dataGridUser.ClearSelection();
-
-            //Tab Price
-            var price = objdb.pk_config_log.ToList();
-            foreach (var item in price)
+            else if(GlobalVaraiable.userRole.Equals("Admin"))
             {
-                dataGridVehiclePrice.Rows.Add(item.Id, item.key, item.value, item.update_date);
-            }
-            dataGridVehiclePrice.Sort(this.Id, ListSortDirection.Descending);
+                //Tab User
+                List<pk_users> user = objdb.pk_users.ToList();
+                foreach (var item in user)
+                {
+                    dataGridUser.Rows.Add(item.username, item.role, item.phone, item.last_login, item.activate, "Reset");
+                }
+                dataGridUser.ClearSelection();
 
+                //Tab Price
+                var price = objdb.pk_config_log.ToList();
+                foreach (var item in price)
+                {
+                    dataGridVehiclePrice.Rows.Add(item.Id, item.key, item.value, item.update_date);
+                }
+                dataGridVehiclePrice.Sort(this.Id, ListSortDirection.Descending);
+            }
+           
 
             //Live Cam
-            getCamera();
+            //getCamera();
             
 
 
@@ -663,7 +676,19 @@ namespace VehicleParking
 
         private void btnRefreshCam_Click(object sender, EventArgs e)
         {
-            
+            //picLiveCamOut.Refresh();
+            //getCamera();
+        }
+
+        private void logoutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            GlobalVaraiable.Username = null;
+            GlobalVaraiable.userRole = null;
+
+            frmLogin login = new frmLogin();
+            Program.MysqlCon.Close();
+            this.Close();
+            login.Show();
         }
     }
 }

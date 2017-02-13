@@ -12,6 +12,7 @@ namespace VehicleParking
     {
         public static bool dis;
         public static string Username;
+        public static string userRole;
         public static string MysqlConnect()
         {
             string path = "MysqlConnection.txt";

@@ -23,8 +23,8 @@ namespace VehicleParking
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmConfigurations());
-            //Application.Run(new frmLogin());
-            Application.Run(new frmMainForm());
+            Application.Run(new frmLogin());
+            //Application.Run(new frmMainForm());
             //Application.Run(new frmUserController());
         }
     }

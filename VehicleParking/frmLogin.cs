@@ -52,6 +52,7 @@ namespace VehicleParking
                     this.Hide();
                     frmMainForm frmMain = new frmMainForm();
                     GlobalVaraiable.Username = txtUsername.Text;
+                    GlobalVaraiable.userRole = user.role;
                     frmMain.Visible = true;                   
                 }
                 else

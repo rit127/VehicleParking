@@ -30,12 +30,12 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtOldPassword = new System.Windows.Forms.TextBox();
+            this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtComfirmPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnChangePassword = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -59,21 +59,23 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Old Password";
             // 
-            // textBox1
+            // txtOldPassword
             // 
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(86, 85);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(235, 23);
-            this.textBox1.TabIndex = 2;
+            this.txtOldPassword.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOldPassword.Location = new System.Drawing.Point(86, 85);
+            this.txtOldPassword.Name = "txtOldPassword";
+            this.txtOldPassword.Size = new System.Drawing.Size(235, 23);
+            this.txtOldPassword.TabIndex = 2;
+            this.txtOldPassword.UseSystemPasswordChar = true;
             // 
-            // textBox2
+            // txtNewPassword
             // 
-            this.textBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(86, 143);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(235, 23);
-            this.textBox2.TabIndex = 4;
+            this.txtNewPassword.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNewPassword.Location = new System.Drawing.Point(86, 143);
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.Size = new System.Drawing.Size(235, 23);
+            this.txtNewPassword.TabIndex = 4;
+            this.txtNewPassword.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -85,13 +87,14 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "New Password";
             // 
-            // textBox3
+            // txtComfirmPassword
             // 
-            this.textBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(86, 202);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(235, 23);
-            this.textBox3.TabIndex = 6;
+            this.txtComfirmPassword.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComfirmPassword.Location = new System.Drawing.Point(86, 202);
+            this.txtComfirmPassword.Name = "txtComfirmPassword";
+            this.txtComfirmPassword.Size = new System.Drawing.Size(235, 23);
+            this.txtComfirmPassword.TabIndex = 6;
+            this.txtComfirmPassword.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -103,15 +106,16 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Comfirm Password";
             // 
-            // button1
+            // btnChangePassword
             // 
-            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(106, 245);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 33);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Change";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePassword.Location = new System.Drawing.Point(106, 245);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(82, 33);
+            this.btnChangePassword.TabIndex = 7;
+            this.btnChangePassword.Text = "Change";
+            this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // btnCancel
             // 
@@ -130,12 +134,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 302);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.btnChangePassword);
+            this.Controls.Add(this.txtComfirmPassword);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtNewPassword);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtOldPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -152,12 +156,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtOldPassword;
+        private System.Windows.Forms.TextBox txtNewPassword;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtComfirmPassword;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.Button btnCancel;
     }
 }

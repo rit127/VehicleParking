@@ -224,6 +224,7 @@
             // 
             this.logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
             resources.ApplyResources(this.logoutToolStripMenuItem1, "logoutToolStripMenuItem1");
+            this.logoutToolStripMenuItem1.Click += new System.EventHandler(this.logoutToolStripMenuItem1_Click);
             // 
             // changePasswordToolStripMenuItem2
             // 
