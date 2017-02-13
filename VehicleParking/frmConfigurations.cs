@@ -87,7 +87,7 @@ namespace VehicleParking
                     fs.Close();
                     MessageBox.Show("Save Successfully ^_^");
                     this.Close();
-
+                    Application.Restart();
 
 
                     frmLogin login = new frmLogin();
@@ -101,8 +101,7 @@ namespace VehicleParking
                     fs.Close();
                     MessageBox.Show("Save Successfully ^_^");
                     this.Close();
-                    frmLogin login = new frmLogin();
-                    login.Show();
+                    Application.Restart();
                 }
                 
                 
